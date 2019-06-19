@@ -1,0 +1,388 @@
+@font-face {
+  font-family: "Maven Pro";
+  src: url("../font/MavenPro-Regular.ttf");
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+
+}
+
+html,
+body {
+  width: 100%;
+  font-family: "Maven Pro";
+}
+
+#navbar {
+  height: 70px;
+  width: 100%;
+  background-color: #597180;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  transition: top 0.3s ease-in-out;
+  -webkit-transition: top 0.3s ease-in-out;
+  -moz-transition: top 0.3s ease-in-out;
+  -ms-transition: top 0.3s ease-in-out;
+  -o-transition: top 0.3s ease-in-out;
+}
+
+#navbar.off {
+  top: -70px;
+  transition: top 0.3s ease-in-out;
+  -webkit-transition: top 0.3s ease-in-out;
+  -moz-transition: top 0.3s ease-in-out;
+  -ms-transition: top 0.3s ease-in-out;
+  -o-transition: top 0.3s ease-in-out;
+}
+
+
+.nav_link {
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.logo {
+  margin-right: auto;
+  margin-left: 100px;
+  font-size: 36px;
+  line-height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  letter-spacing: 2px;
+}
+
+.logo_svg {
+  margin-right: 10px
+}
+
+.hamburger {
+  display: none;
+  outline: none;
+}
+
+.git_txt_logo {
+  display: none
+}
+
+.nav_items {
+  display: flex;
+  align-items: center
+}
+
+.nav_item {
+  cursor: pointer;
+  transition: border 0.3s ease-in-out;
+  padding: 15px;
+  border: solid 2px transparent;
+}
+
+.nav_item:hover {
+  font-weight: 600;
+  border: solid 2px white;
+  padding: 15px;
+  transition: border 0.3s ease-in-out;
+}
+
+.git_logo {
+  margin-left: 20px;
+  margin-right: 100px;
+  cursor: pointer;
+}
+
+.main_section {
+  width: 100%;
+  height: 80vh;
+  min-height: 600px;
+  padding-top: 70px;
+  color: #597180;
+}
+
+.main_top {
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.main_bottom {
+  height: 30%;
+  background-color: #c8d5d9;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+
+.logo_title {
+  font-size: 72px;
+  margin-bottom: 20px;
+  display: flex;
+  position: relative;
+}
+
+.mouse {
+  position: absolute;
+  right: -100px;
+  top: 10px;
+  opacity: 0;
+}
+
+.js_j {
+  border: solid 2px white;
+  margin-right: 2px;
+  position: relative;
+}
+
+.js_s {
+  border: solid 2px white;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  color: #597180;
+}
+
+.close:hover {
+  opacity: 1;
+}
+
+.close:before,
+.close:after {
+  position: absolute;
+  left: 5px;
+  content: " ";
+  height: 11px;
+  width: 2px;
+  background-color: #597180;
+}
+
+.close:before {
+  transform: rotate(45deg);
+}
+
+.close:after {
+  transform: rotate(-45deg);
+}
+
+.description_title {
+  font-weight: 100;
+  font-size: 24px;
+  text-align: center;
+}
+
+.created_by {
+  font-size: 18px;
+}
+
+.btn_container {
+  margin-top: 80px;
+  margin-bottom: 80px;
+}
+
+.main_btn {
+  font-size: 24px;
+  width: 210px;
+  padding: 10px 0px 10px 0px;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin: 0px 10px 0px 10px;
+  transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out;
+  outline: none;
+}
+
+.g_started {
+  background-color: #ff3e00;
+  border: solid 2px #ff3e00;
+}
+
+.g_started:hover {
+  background-color: white;
+  color: #ff3e00;
+  transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out;
+}
+
+.ddl {
+  color: #c1151d;
+  background-color: transparent;
+  border: solid 2px #c1151d;
+}
+
+.ddl:hover {
+  background-color: #c1151d;
+  color: white;
+  transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out;
+}
+
+.doc {
+  background-color: #40b3ff;
+  border: solid 2px #40b3ff;
+}
+
+.doc:hover {
+  background-color: white;
+  color: #40b3ff;
+  transition: background-color 0.12s ease-in-out, color 0.12s ease-in-out;
+}
+
+.description {
+  max-width: 55%;
+}
+
+
+
+@media screen and (max-height: 860px) {
+  .btn_container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .logo {
+    margin: 0;
+    font-size: 5vw;
+    margin-right: auto;
+    margin-left: 10px;
+  }
+
+  .logo_title {
+    font-size: 65px;
+  }
+
+  .nav_link {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+
+  .git_logo {
+    margin: 0;
+    margin-right: 10px;
+    max-height: 44px;
+    height: 6vw;
+  }
+
+  .hamburger {
+    color: white
+  }
+
+  .git_txt_logo {
+    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 100%;
+    padding: 10px
+  }
+
+  .git_logo2 {
+    margin-left: 10px;
+  }
+
+  .git_logo {
+    display: none
+  }
+
+  .nav_items {
+    background-color: #7a8d99;
+    position: absolute;
+    right: -80vh;
+    top: 70px;
+    width: 70vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    transition: right 0.5s ease-in-out;
+    -webkit-transition: right 0.5s ease-in-out;
+    -moz-transition: right 0.5s ease-in-out;
+    -ms-transition: right 0.5s ease-in-out;
+    -o-transition: right 0.5s ease-in-out;
+  }
+
+  .hamburger {
+    display: block;
+    margin-right: 0px
+  }
+
+  .hamb_on {
+    right: 0;
+    transition: right 0.5s ease-in-out;
+    -webkit-transition: right 0.5s ease-in-out;
+    -moz-transition: right 0.5s ease-in-out;
+    -ms-transition: right 0.5s ease-in-out;
+    -o-transition: right 0.5s ease-in-out;
+  }
+
+  .nav_item {
+    border: none;
+    padding: 0px;
+    font-size: 3.5vw;
+    padding: 10px;
+    font-size: 18px;
+    width: 100%;
+    border-bottom: solid 1px white
+  }
+
+  .nav_item:hover {
+    font-weight: normal;
+    border: none;
+    padding: 10px;
+    transition: border 0.3s ease-in-out;
+    border-bottom: solid 1px white;
+    background-color: #89a3b4
+  }
+
+  .btn_container {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .main_btn {
+    font-size: 12px;
+    width: 30%;
+    height: 50px;
+    margin: 0;
+  }
+
+  .description_title {
+    font-size: 16px;
+  }
+
+  .description {
+    max-width: 90%;
+    font-size: 20px;
+  }
+}

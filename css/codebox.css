@@ -1,0 +1,287 @@
+@font-face {
+    font-family: "consolas";
+    src: url("../font/CONSOLA.TTF");
+}
+
+.second_section {
+    background-color: rgba(37, 36, 35, 0.871);
+    padding: 0px 40px 40px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.example_title {
+    margin-top: 70px;
+}
+
+.ex_text {
+    margin-bottom: 20px;
+    color: #ff626c;
+    font-size: 26px;
+    font-weight: 900;
+    text-align: center
+}
+
+.example_desc {
+    font-size: 18px;
+    font-weight: 100;
+    color: white;
+}
+
+.example {
+    font-family: "consolas";
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+}
+
+.codebox {
+    font-family: "consolas";
+    background-color: white;
+    width: 50%;
+    max-width: 750px;
+    height: 330px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.codebox.code {
+    margin-right: 20px;
+}
+
+.codebox.result {
+    margin-left: 20px;
+    position: relative;
+}
+
+.codebox_top {
+    height: 30px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+}
+
+.round_btn {
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    margin: 0px 5px 0px 5px;
+}
+
+.round_btn:nth-child(1) {
+    background-color: #ff5f57;
+}
+
+.round_btn:nth-child(2) {
+    background-color: #ffbd2e;
+}
+
+.round_btn:nth-child(3) {
+    background-color: #2ace42;
+}
+
+.html_js_tab {
+    width: 100%;
+    display: flex;
+    height: 25px;
+}
+
+.tab {
+    width: 30%;
+    background-color: #e9e9e9;
+    text-align: center;
+    line-height: 25px;
+    border: solid 1px rgba(0, 0, 0, 0.472);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: none;
+    font-size: 14px;
+}
+
+.tab:nth-child(2) {
+    margin-left: 20%;
+}
+
+.tab img {
+    margin-right: 5px;
+}
+
+.code_content {
+    display: flex;
+    width: 100%;
+    height: 275px;
+}
+
+.code_content div {
+    height: 100%;
+    width: 50%;
+    background-color: #fdf6e3;
+}
+
+.html_content {
+    border: solid 1px rgba(0, 0, 0, 0.472);
+    padding: 10px;
+    overflow-y: scroll;
+}
+
+.js_content {
+    border: solid 1px rgba(0, 0, 0, 0.472);
+    padding: 10px;
+}
+
+.scrollable {
+    overflow-y: scroll
+}
+
+.result_content {
+    width: 100%;
+    border-top: solid 1px rgba(0, 0, 0, 0.472);
+}
+
+.result_content {
+    padding: 10px;
+}
+
+
+.example1_container .item {
+    padding: 15px;
+    border: solid 1px black;
+    margin-bottom: 4px;
+    background-color: #e9e9e9;
+}
+
+.example3_container .item {
+    float: left;
+    display: inline-block;
+    width: 100px;
+    padding: 15px;
+    border: solid 1px black;
+    margin: 4px;
+    background-color: #e9e9e9;
+    text-align: center;
+}
+
+.example3_container {
+    width: 100%;
+    height: 280px;
+    overflow-y: scroll;
+}
+
+.add_btn {
+    padding: 10px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.example2_container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    height: 280px;
+    width: auto;
+    overflow-y: scroll;
+}
+
+.cat {
+    margin: 4px
+}
+
+.example2_container .cat img {
+    width: 200px;
+    height: 170px;
+
+}
+
+.example4_container {
+    overflow-y: hidden;
+    height: 200px;
+}
+
+.example4_container div {
+    display: inline-block;
+    padding: 10px;
+    width: 29%;
+    border: solid 1px black;
+    margin: 4px;
+    background-color: #e9e9e9;
+    text-align: center;
+}
+
+
+
+.refresh_btn {
+    position: absolute;
+    bottom: 5px;
+    right: 30px;
+    z-index: 10;
+    background-color: #ffffff;
+    padding: 5px;
+    border: solid 1px rgba(0, 0, 0, 0.342);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.refresh_1,
+.refresh_4 {
+    right: 5px;
+}
+
+.refresh_btn:hover {
+    background-color: rgb(130, 188, 255);
+    transition: background-color 0.1s ease;
+}
+
+@media screen and (max-width: 1000px) {
+    .second_section {
+        padding: 10px;
+        padding-top: 30px;
+    }
+
+    .example {
+        flex-direction: column;
+    }
+
+    .codebox {
+        width: 100%;
+    }
+
+    .codebox.code {
+        margin-right: 0px;
+        margin-bottom: 10px;
+    }
+
+    .codebox.result {
+        margin-left: 0px;
+        margin-top: 10px;
+    }
+
+    pre {
+        font-size: 10px;
+    }
+
+    .tab {
+        width: 50%;
+        border-top-left-radius: 10px;
+    }
+
+    .tab:nth-child(2) {
+        margin-left: 0%;
+    }
+}
