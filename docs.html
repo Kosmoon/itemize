@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="icon" href="img/favicon.ico" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/docs.css" />
+  <link rel="stylesheet" href="css/prism2.css" />
+  <script src="js/scroll.js"></script>
+  <script src="js/resize.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/doc_navigation.js"></script>
+  <title>Documentation</title>
+</head>
+
+<body>
+  <div id="navbar">
+    <a href="index.html" class="logo">
+      <img height="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span class="logo_txt">ItemizeJS</span>
+    </a>
+    <button class="hamburger hamburger--collapse" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="nav_items hamb_off">
+      <div class="nav_link nav_item">Getting started</div>
+      <div class="nav_link nav_item">Download</div>
+      <div class="nav_link nav_item">Documentation</div>
+      <div class="nav_link nav_item">Examples</div>
+      <div class="git_txt_logo">
+        <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
+      </div>
+      <img class="nav_link git_logo" src="img/GitHub-Mark.png" alt="git logo" />
+    </div>
+  </div>
+  <div id="main_content">
+    <div id="left_content">
+      <h1>Public Methods</h1>
+      <h2>apply</h2>
+      <h2>cancel</h2>
+      <h1>Options</h1>
+      <h2>removeBtn</h2>
+      <h2>removeBtnClass</h2>
+      <h2>removeBtnWidth</h2>
+      <h2>removeBtnThickness</h2>
+      <h2>removeBtnColor</h2>
+      <h2>removeBtnHoverColor</h2>
+      <h2>removeBtnBgColor</h2>
+      <h2>removeBtnBgHoverColor</h2>
+      <h2>removeBtnSharpness</h2>
+      <h2>removeBtnPosition</h2>
+      <h2>removeBtnMargin</h2>
+      <h2>removeBtnCircle</h2>
+
+      <h2>modalConfirm</h2>
+      <h2>modalText</h2>
+      <h2>showRemoveNotifications</h2>
+      <h2>showAddNotifications</h2>
+      <h2>removeNotificationText</h2>
+      <h2>addNotificationText</h2>
+      <h2>notificationPosition</h2>
+      <h2>notificationTimer</h2>
+      <h2>anim</h2>
+      <h2>animEasing</h2>
+      <h2>animDuration</h2>
+      <h2>animRemoveTranslateX</h2>
+      <h2>animRemoveTranslateY</h2>
+      <h2>animAddTranslateX</h2>
+      <h2>animAddTranslateY</h2>
+      <h2>beforeRemove</h2>
+      <h2>outlineItemOnHover</h2>
+      <h2>nestingLevel</h2>
+      <h2>itemizeAddedElement</h2>
+      <h2>onAddItem</h2>
+      <h1>Public Properties</h1>
+    </div>
+    <div id="right_content">
+      <div class="separator"></div>
+      <h1>apply(targets, options)</h1>
+      <h1 class="desc">
+        Apply itemization of targeted containers with specified options.
+      </h1>
+      <h1 class="under_h1">Parameters:</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">targets</td>
+            <td class="type">
+              String or DOM element<br />or Array of Strings or Array of DOM
+              elements
+            </td>
+            <td class="default">"[itemize]"</td>
+            <td>
+              Single selector or an array of selectors targeting the
+              containers to itemize (vanilla javascript "querySelector"
+              syntax).<br />Example: ".container" or [".container",
+              "#special_container"].<br />
+              Or DOM elements.<br />If no target is specified, default targets
+              will be elements with the "itemize" attribute.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">options</td>
+            <td class="type">Object</td>
+            <td class="default">see default options</td>
+            <td>fds</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="separator"></div>
+      <h1 class="cancel">cancel(targets)</h1>
+      <h1 class="desc">
+        Cancel itemization of targeted containers.
+      </h1>
+      <h1 class="under_h1">Parameters:</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">targets</td>
+            <td class="type">
+              String or DOM element<br />or Array of Strings or Array of DOM
+              elements
+            </td>
+            <td class="default">"[itemize]"</td>
+            <td>
+              Single selector or an array of selectors targeting the
+              containers to cancel itemization (vanilla javascript
+              "querySelector" syntax).<br />Example: ".container" or
+              [".container", "#special_container"].<br />
+              Or DOM elements.<br />If no target is specified, default targets
+              will be elements with the "itemize" attribute.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="separator"></div>
+      <h1 class="options">Options</h1>
+      <h1 class="desc">
+        (Object) Parameter of the public method "apply".<br />
+        All the properties (except "beforeRemove" and "onAddItem") can be set
+        in HTML with attributes. <br /><br />
+        Example:
+        <pre><code class="language-html">&lt;div itemize class="container" modalConfirm="true" modalText="Are you really sure?" notificationTimer="2000"></code></pre>
+        <br />
+        Or in the "apply" function's parameter. <br /><br />
+        Example:
+        <pre><code class="language-javascript">var itemManager = new Itemize;
+ itemManager.apply(".container", {
+   modalConfirm: true,
+   modalText: "Are you really sure?",
+   notificationTimer: 2000
+ });
+ // It also works without specifying a target (it will target all elements with the "itemize" attribute):
+ itemManager.apply({
+  modalConfirm: true,
+  modalText: "Are you really sure?",
+  notificationTimer: 2000
+ });</code></pre>
+      </h1>
+      <h1 class="under_h1">Properties:</h1>
+      <table class="table_options">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Default</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">removeBtn</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">true</td>
+            <td>
+              If true then the default remove button will be used. If false
+              and removeBtnClass is not specified, a click on the item will
+              remove it.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeBtnClass</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">null</td>
+            <td>
+              If specified then replace the default remove button with your
+              custom button, targeted by the specified class.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeBtnWidth</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">20</td>
+            <td>
+              The width of the remove button.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name">removeBtnThickness</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">2</td>
+            <td>
+              The thickness of the cross icon.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name">removeBtnColor</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">#565C67</td>
+            <td>
+              The color of the cross icon.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name">removeBtnHoverColor</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">#ffffff</td>
+            <td>
+              The color of the cross icon on hover.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name">removeBtnBgColor</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">#d1cfcf91</td>
+            <td>
+              The background color of the remove button.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeBtnBgHoverColor</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">#959595</td>
+            <td>
+              The background color of the remove button on hover.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeBtnSharpness</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">0px</td>
+            <td>
+              The sharpness of the cross icon's edges.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name">removeBtnPosition</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">top-right</td>
+            <td>
+              The position of the remove button. Accepted values: "top-right",
+              "center-right", "bottom-right", "bottom-center", "bottom-left",
+              "center-left", "top-left", "top-center".
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeBtnMargin</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">2</td>
+            <td>
+              The margin of the remove button.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeBtnCircle</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">false</td>
+            <td>
+              If true then the remove button's border will be a circle.
+            </td>
+          </tr>
+
+          <tr>
+            <td class="name">modalConfirm</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">false</td>
+            <td>
+              If true then a confirm modal will pop on every remove button
+              click.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">modalText</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">Are you sure to remove this item?</td>
+            <td>
+              Specifies the text to display in the confirm box.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">showRemoveNotifications</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">false</td>
+            <td>
+              If true then a notification message will pop for every removed
+              item.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">showAddNotifications</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">false</td>
+            <td>
+              If true then a notification message will pop for every added
+              item.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">removeNotificationText</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">Item removed</td>
+            <td>
+              Specifies the text to display in the notification message for
+              removed items.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">addNotificationText</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">Item added</td>
+            <td>
+              Specifies the text to display in the notification message for
+              added items.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">notificationPosition</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">bottom-right</td>
+            <td>
+              The position of the notification messages. Accepted values:
+              "top-right", "center-right", "bottom-right", "bottom-center",
+              "bottom-left", "center-left", "top-left", "top-center".
+            </td>
+          </tr>
+          <tr>
+            <td class="name">notificationTimer</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">4000</td>
+            <td>
+              The time (in millisecond) to wait before the notification
+              message disappears.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">anim</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">true</td>
+            <td>
+              If false then turn off all animations.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">animEasing</td>
+            <td class="type">
+              String
+            </td>
+            <td class="default">ease-in-out</td>
+            <td>
+              Animation easing. Only accepts the pre-defined values "linear",
+              "ease", "ease-in", "ease-out", and "ease-in-out", or a custom
+              "cubic-bezier" value like "cubic-bezier(0.42, 0, 0.58, 1)".
+            </td>
+          </tr>
+          <tr>
+            <td class="name">animDuration</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">500</td>
+            <td>Animation duration in millisecond.</td>
+          </tr>
+          <tr>
+            <td class="name">animRemoveTranslateX</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">0</td>
+            <td>
+              Horizontal translation value (from 0 to "animRemoveTranslateX" )
+              of the animation when an item is removed.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">animRemoveTranslateY</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">-100</td>
+            <td>
+              vertical translation value (from 0 to "animRemoveTranslateY" )
+              of the animation when an item is removed.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">animAddTranslateX</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">0</td>
+            <td>
+              Horizontal translation value (from "animAddTranslateX" to 0) of
+              the animation when an item is added.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">animAddTranslateY</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">-100</td>
+            <td>
+              vertical translation value (from animAddTranslateY to 0) of the
+              animation when an item is added.
+            </td>
+          </tr>
+          <tr>
+            <td class="name">outlineItemOnHover</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">false</td>
+            <td>highlight item when you hover your mouse over it.</td>
+          </tr>
+          <tr>
+            <td class="name">nestingLevel</td>
+            <td class="type">
+              Number
+            </td>
+            <td class="default">1</td>
+            <td>Controls the nesting level of the itemization.</td>
+          </tr>
+          <tr>
+            <td class="name">itemizeAddedElement</td>
+            <td class="type">
+              Boolean
+            </td>
+            <td class="default">true</td>
+            <td>If false then stops itemizing new added DOM elements.</td>
+          </tr>
+          <tr>
+            <td class="name">beforeRemove</td>
+            <td class="type">
+              Function
+            </td>
+            <td class="default">null</td>
+            <td>
+              Function called when an item is about to be removed. It receives
+              the item to remove as parameter (DOM element).<br /><br />
+              Synchronous: return "true" if you want to actually remove the
+              item and "false" if you don't want to remove it. <br />
+              <br />
+              Asynchronous: return a new promise and call resolve() if you
+              want to actually remove the item and reject() if you don't want
+              to remove it.<br /><br />
+              Example (Synchronous): <br />
+              <pre><code class="language-javascript">var itemManager = new Itemize();
+  itemManager.apply({
+    beforeRemove: (item) => {
+      console.log(item);
+      return true;
+    }
+  });</code></pre>
+              <br />
+              Example (Asynchronous): <br />
+              <pre><code class="language-javascript">var itemManager = new Itemize();
+  itemManager.apply({
+    beforeRemove: (item) => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          console.log(item)
+          resolve();
+        }, 500);
+      });
+    }
+  });</code></pre>
+            </td>
+          </tr>
+          <tr>
+            <td class="name">onAddItem</td>
+            <td class="type">
+              Function
+            </td>
+            <td class="default">null</td>
+            <td>
+              Function called when an item is added. It receives the added
+              item as parameter (DOM element).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</body>
+
+</html>

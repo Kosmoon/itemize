@@ -35,7 +35,7 @@ pre[class*="language-"] {
 	color: #657b83;
 	/* base00 */
 	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
-	font-size: 14px;
+	font-size: 16px;
 	text-align: left;
 	white-space: pre;
 	word-spacing: normal;
@@ -52,7 +52,6 @@ pre[class*="language-"] {
 	-moz-hyphens: none;
 	-ms-hyphens: none;
 	hyphens: none;
-	height: 275px;
 	padding: 10px;
 }
 

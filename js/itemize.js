@@ -1,5 +1,5 @@
 /*
- -- itemize.js v0.50--
+ -- itemize.js v0.55--
  -- (c) 2019 Kosmoon Studio --
  -- Released under the MIT license --
  */
@@ -13,7 +13,6 @@ class Itemize {
     this.modalDisappearTimeout = null;
     this.elPos = {};
     this.flipPlayId = "";
-    this.inFlipPlay = false;
     this.elemToRemove = [];
     this.lastTargetedContainers = null;
     window.requestAnimationFrame =
@@ -207,7 +206,7 @@ class Itemize {
                         ) {
                           if (
                             node.parentElement.itemizeOptions &&
-                            node.parentElement.itemizeOptions.flipAnimation
+                            node.parentElement.itemizeOptions.anim
                           ) {
                             node.classList.add("itemize_hide");
                             scope.itemizeChild(node, node.parentElement, true);
@@ -215,7 +214,7 @@ class Itemize {
                             scope.flipAdd(node);
                             scope.flipPlay(
                               scope.items,
-                              node.parentElement.itemizeOptions.flipAnimDuration
+                              node.parentElement.itemizeOptions.animDuration
                             );
                           } else {
                             scope.itemizeChild(node, node.parentElement, true);
@@ -282,6 +281,11 @@ class Itemize {
     if (this.childIsItemizable(child, parent)) {
       child.itemizeItemId = this.makeId(8);
       this.items.push(child);
+      if (parent.itemizeItems) {
+        parent.itemizeItems.push(child);
+      } else {
+        parent.itemizeItems = [child];
+      }
       child.classList.add("itemize_item_" + child.itemizeItemId);
       child.classList.add("itmz_item");
       if (!parent.itemizeOptions.removeBtn) {
@@ -1224,10 +1228,7 @@ class Itemize {
         item.parentElement &&
         item.parentElement.itemizeOptions
       ) {
-        if (
-          (!item.removeStatus || item.removeStatus !== "pending") &&
-          !this.inFlipPlay
-        ) {
+        if (!item.removeStatus || item.removeStatus !== "pending") {
           if (this.globalOptions.beforeRemove) {
             item.removeStatus = "pending";
             let confirmRemove = this.globalOptions.beforeRemove(item);
@@ -1237,13 +1238,12 @@ class Itemize {
               );
             }
             if (typeof confirmRemove.then === "function") {
-              let animDuration =
-                item.parentElement.itemizeOptions.flipAnimDuration;
+              let animDuration = item.parentElement.itemizeOptions.animDuration;
               let onClickFn = item.onclick;
               item.onclick = null;
               confirmRemove
                 .then(response => {
-                  if (item.parentElement.itemizeOptions.flipAnimation) {
+                  if (item.parentElement.itemizeOptions.anim) {
                     let closeBtn = item.querySelector(".itemize_remove_btn");
                     if (closeBtn) {
                       closeBtn.onclick = null;
@@ -1273,9 +1273,9 @@ class Itemize {
                   item.removeStatus = null;
                 });
             } else if (confirmRemove) {
-              if (item.parentElement.itemizeOptions.flipAnimation) {
+              if (item.parentElement.itemizeOptions.anim) {
                 let animDuration =
-                  item.parentElement.itemizeOptions.flipAnimDuration;
+                  item.parentElement.itemizeOptions.animDuration;
                 let closeBtn = item.querySelector(".itemize_remove_btn");
                 item.onclick = null;
                 if (closeBtn) {
@@ -1301,9 +1301,8 @@ class Itemize {
               }
             }
           } else {
-            if (item.parentElement.itemizeOptions.flipAnimation) {
-              let animDuration =
-                item.parentElement.itemizeOptions.flipAnimDuration;
+            if (item.parentElement.itemizeOptions.anim) {
+              let animDuration = item.parentElement.itemizeOptions.animDuration;
               let closeBtn = item.querySelector(".itemize_remove_btn");
               if (closeBtn) {
                 closeBtn.onclick = null;
@@ -1343,6 +1342,16 @@ class Itemize {
       if (item.classList[u].indexOf("itemize_item_") !== -1) {
         item.classList.remove(item.classList[u]);
         break;
+      }
+    }
+    if (item.parentNode && item.parentNode.itemizeItems) {
+      for (let i = 0; i < item.parentNode.itemizeItems.length; i++) {
+        if (
+          item.parentNode.itemizeItems[i].itemizeItemId === item.itemizeItemId
+        ) {
+          item.parentNode.itemizeItems.splice(i, 1);
+          break;
+        }
       }
     }
     if (
@@ -1459,8 +1468,8 @@ class Itemize {
           }
         ],
         {
-          duration: options.flipAnimDuration * 0.5,
-          easing: options.flipAnimEasing,
+          duration: options.animDuration * 0.5,
+          easing: options.animEasing,
           fill: "both"
         }
       );
@@ -1491,7 +1500,7 @@ class Itemize {
             }
           }
         ],
-        options.flipAnimDuration * 0.5
+        options.animDuration * 0.5
       );
     }
     let flipPlayId = this.makeId(6);
@@ -1499,15 +1508,16 @@ class Itemize {
     setTimeout(() => {
       this.elemToRemove.push(elem);
       if (this.flipPlayId === flipPlayId) {
+        this.flipRead(this.items);
         for (let i = 0; i < this.elemToRemove.length; i++) {
           this.cleanItem(this.elemToRemove[i]);
           this.elemToRemove[i].removeStatus = null;
           this.elemToRemove[i].remove();
         }
         this.elemToRemove = [];
-        this.flipPlay(this.items, options.flipAnimDuration * 0.5);
+        this.flipPlay(this.items, options.animDuration * 0.5);
       }
-    }, options.flipAnimDuration * 0.5);
+    }, options.animDuration * 0.5);
   }
   flipAdd(elem) {
     elem.classList.remove("itemize_hide");
@@ -1545,8 +1555,8 @@ class Itemize {
           }
         ],
         {
-          duration: options.flipAnimDuration,
-          easing: options.flipAnimEasing,
+          duration: options.animDuration,
+          easing: options.animEasing,
           fill: "both"
         }
       );
@@ -1577,7 +1587,7 @@ class Itemize {
             }
           }
         ],
-        options.flipAnimDuration
+        options.animDuration
       );
     }
 
@@ -1585,7 +1595,7 @@ class Itemize {
       elem.inAddAnim = false;
       elem.newAddPos = null;
       elem.oldPos = null;
-    }, options.flipAnimDuration);
+    }, options.animDuration);
   }
   flipRead(elems) {
     // this.elPos = {};
@@ -1615,7 +1625,6 @@ class Itemize {
         }
 
         if (deltaX !== 0 || deltaY !== 0 || deltaW !== 1 || deltaH !== 1) {
-          this.inFlipPlay = true;
           if (elems[i].animate) {
             elems[i].animate(
               [
@@ -1628,7 +1637,7 @@ class Itemize {
               ],
               {
                 duration: duration,
-                easing: elems[i].parentNode.itemizeOptions.flipAnimEasing,
+                easing: elems[i].parentNode.itemizeOptions.animEasing,
                 fill: "both"
               }
             );
@@ -1656,9 +1665,6 @@ class Itemize {
               duration
             );
           }
-          setTimeout(() => {
-            this.inFlipPlay = false;
-          }, duration);
         }
       }
     }
@@ -1672,32 +1678,32 @@ class Itemize {
         removeBtnThickness: 2,
         removeBtnColor: "#565C67",
         removeBtnHoverColor: "#ffffff",
+        removeBtnBgColor: "#d1cfcf91",
+        removeBtnBgHoverColor: "#959595",
         removeBtnSharpness: "0px",
         removeBtnPosition: "top-right",
         removeBtnMargin: 2,
         removeBtnCircle: true,
-        removeBtnBgColor: "#d1cfcf91",
-        removeBtnBgHoverColor: "#959595",
         removeBtnClass: null,
         modalConfirm: false,
         modalText: "Are you sure to remove this item?",
-        removeNotificationText: "Item removed",
-        addNotificationText: "Item added",
         showRemoveNotifications: false,
         showAddNotifications: false,
+        removeNotificationText: "Item removed",
+        addNotificationText: "Item added",
         notificationPosition: "bottom-right",
         notificationTimer: 4000,
-        flipAnimation: true,
-        flipAnimEasing: "ease-in-out",
-        flipAnimDuration: 500,
+        anim: true,
+        animEasing: "ease-in-out",
+        animDuration: 500,
         animRemoveTranslateX: 0,
         animRemoveTranslateY: -100,
         animAddTranslateX: 0,
         animAddTranslateY: -100,
-        beforeRemove: null,
         outlineItemOnHover: false,
         nestingLevel: 1,
         itemizeAddedElement: true,
+        beforeRemove: null,
         onAddItem: null
       };
       if (this.globalOptions) {
@@ -1774,8 +1780,8 @@ class Itemize {
   //   if (typeof options.notificationPosition !== "string") {
   //     error += "option 'notificationPosition' must be a String\n";
   //   }
-  //   if (typeof options.flipAnimation !== "boolean") {
-  //     error += "option 'flipAnimation' must be a Boolean\n";
+  //   if (typeof options.anim !== "boolean") {
+  //     error += "option 'anim' must be a Boolean\n";
   //   }
   //   if (typeof options.outlineItemOnHover !== "boolean") {
   //     error += "option 'outlineItemOnHover' must be a Boolean\n";
@@ -1783,21 +1789,21 @@ class Itemize {
   //   if (typeof options.nestingLevel !== "number") {
   //     error += "option 'nestingLevel' must be a Number\n";
   //   }
-  //   if (typeof options.flipAnimDuration !== "number") {
-  //     error += "option 'flipAnimDuration' must be a Number\n";
+  //   if (typeof options.animDuration !== "number") {
+  //     error += "option 'animDuration' must be a Number\n";
   //   }
-  //   if (typeof options.flipAnimEasing !== "string") {
-  //     error += "option 'flipAnimEasing' must be a String\n";
+  //   if (typeof options.animEasing !== "string") {
+  //     error += "option 'animEasing' must be a String\n";
   //   } else if (
-  //     options.flipAnimEasing !== "linear" &&
-  //     options.flipAnimEasing !== "ease" &&
-  //     options.flipAnimEasing !== "ease-in-out" &&
-  //     options.flipAnimEasing !== "ease-in" &&
-  //     options.flipAnimEasing !== "ease-out" &&
-  //     options.flipAnimEasing.indexOf("cubic-bezier(") === -1
+  //     options.animEasing !== "linear" &&
+  //     options.animEasing !== "ease" &&
+  //     options.animEasing !== "ease-in-out" &&
+  //     options.animEasing !== "ease-in" &&
+  //     options.animEasing !== "ease-out" &&
+  //     options.animEasing.indexOf("cubic-bezier(") === -1
   //   ) {
   //     error +=
-  //       "option 'flipAnimEasing' only accepts the pre-defined values 'linear', 'ease', 'ease-in', 'ease-out', and 'ease-in-out', or a custom 'cubic-bezier' value like 'cubic-bezier(0.42, 0, 0.58, 1)'. \n";
+  //       "option 'animEasing' only accepts the pre-defined values 'linear', 'ease', 'ease-in', 'ease-out', and 'ease-in-out', or a custom 'cubic-bezier' value like 'cubic-bezier(0.42, 0, 0.58, 1)'. \n";
   //   }
   //   if (typeof options.animRemoveTranslateX !== "number") {
   //     error += "option 'animRemoveTranslateX' must be a Number\n";
@@ -1826,7 +1832,7 @@ class Itemize {
       "removeBtnThickness",
       "removeBtnMargin",
       "nestingLevel",
-      "flipAnimDuration",
+      "animDuration",
       "animRemoveTranslateX",
       "animRemoveTranslateY",
       "animAddTranslateX",
@@ -1862,10 +1868,10 @@ class Itemize {
     // } else if (parent.getAttribute("modalConfirm") === "true") {
     //   options.modalConfirm = true;
     // }
-    // if (parent.getAttribute("flipAnimation") === "false") {
-    //   options.flipAnimation = false;
-    // } else if (parent.getAttribute("flipAnimation") === "true") {
-    //   options.flipAnimation = true;
+    // if (parent.getAttribute("anim") === "false") {
+    //   options.anim = false;
+    // } else if (parent.getAttribute("anim") === "true") {
+    //   options.anim = true;
     // }
     // if (typeof parent.getAttribute("removeBtnClass") === "string") {
     //   if (parent.getAttribute("removeBtnClass") === "false") {
@@ -1945,14 +1951,14 @@ class Itemize {
     //   options.nestingLevel = parseInt(parent.getAttribute("nestingLevel"));
     // }
     // if (
-    //   typeof parent.getAttribute("flipAnimDuration") === "string" &&
-    //   parseInt(parent.getAttribute("flipAnimDuration")) > 0
+    //   typeof parent.getAttribute("animDuration") === "string" &&
+    //   parseInt(parent.getAttribute("animDuration")) > 0
     // ) {
-    //   options.flipAnimDuration = parseInt(
-    //     parent.getAttribute("flipAnimDuration")
+    //   options.animDuration = parseInt(
+    //     parent.getAttribute("animDuration")
     //   );
     // }
-    // let easeAttr = parent.getAttribute("flipAnimEasing");
+    // let easeAttr = parent.getAttribute("animEasing");
     // if (typeof easeAttr === "string") {
     //   if (
     //     easeAttr !== "linear" &&
@@ -1963,10 +1969,10 @@ class Itemize {
     //     easeAttr.indexOf("cubic-bezier(") === -1
     //   ) {
     //     console.error(
-    //       " - Itemize error - \n 'flipAnimEasing' only accepts the pre-defined values 'linear', 'ease', 'ease-in', 'ease-out', and 'ease-in-out', or a custom 'cubic-bezier' value like 'cubic-bezier(0.42, 0, 0.58, 1)'. \n"
+    //       " - Itemize error - \n 'animEasing' only accepts the pre-defined values 'linear', 'ease', 'ease-in', 'ease-out', and 'ease-in-out', or a custom 'cubic-bezier' value like 'cubic-bezier(0.42, 0, 0.58, 1)'. \n"
     //     );
     //   } else {
-    //     options.flipAnimEasing = easeAttr;
+    //     options.animEasing = easeAttr;
     //   }
     // }
     // if (

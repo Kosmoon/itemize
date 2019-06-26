@@ -53,7 +53,7 @@ window.addEventListener("load", function() {
   var ex4Container = document.querySelector(".example4_container");
   itemManager.apply(".example4_container", {
     removeBtnClass: "rm_btn",
-    flipAnimDuration: 1000,
+    animDuration: 1000,
     animRemoveTranslateX: 200,
     animRemoveTranslateY: 100
   });
@@ -62,7 +62,7 @@ window.addEventListener("load", function() {
       '<div>ITEM 1<br><button class="rm_btn">Remove me</button></div><div>ITEM 2<br><button class="rm_btn">Remove me</button></div><div>ITEM 3<br><button class="rm_btn">Remove me</button></div>';
     itemManager.apply(".example4_container", {
       removeBtnClass: "rm_btn",
-      flipAnimDuration: 1000,
+      animDuration: 1000,
       animRemoveTranslateX: 200,
       animRemoveTranslateY: 100
     });

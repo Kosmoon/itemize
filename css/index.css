@@ -45,6 +45,10 @@ body {
   -o-transition: top 0.3s ease-in-out;
 }
 
+#navbar a {
+  text-decoration: none;
+  color: white
+}
 
 .nav_link {
   margin-right: 5px;
@@ -86,14 +90,24 @@ body {
   cursor: pointer;
   transition: border 0.3s ease-in-out;
   padding: 15px;
-  border: solid 2px transparent;
+  border: solid 1px transparent;
+  border-radius: 4px;
 }
 
 .nav_item:hover {
-  font-weight: 600;
-  border: solid 2px white;
+  background-color: #4f6472;
+  border: solid 1px white;
+  border-radius: 4px;
   padding: 15px;
-  transition: border 0.3s ease-in-out;
+  transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  -webkit-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -moz-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -ms-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  -o-transition: border 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
 .git_logo {
@@ -344,12 +358,17 @@ body {
 
   .nav_item {
     border: none;
+    border-radius: 0px;
     padding: 0px;
     font-size: 3.5vw;
     padding: 10px;
     font-size: 18px;
     width: 100%;
-    border-bottom: solid 1px white
+    border-bottom: solid 1px white;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    -ms-border-radius: 0px;
+    -o-border-radius: 0px;
   }
 
   .nav_item:hover {

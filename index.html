@@ -1,120 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>
-      ItemizeJS - Turn any container's children into manageable items
-    </title>
-    <link rel="stylesheet" href="css/hamb.min.css" />
-    <link rel="stylesheet" href="css/index.css" />
-    <link rel="stylesheet" href="css/codebox.css" />
-    <link rel="stylesheet" href="css/prism.css" />
-    <link rel="icon" href="img/favicon.ico" />
-    <script src="js/itemize.js"></script>
-    <script src="js/example_itemize.js"></script>
-    <script src="js/anime.min.js"></script>
-    <script src="js/titleAnimated.js"></script>
-    <script src="js/prism.js"></script>
-    <script src="js/scroll.js"></script>
-    <script src="js/resize.js"></script>
-  </head>
 
-  <body>
-    <div id="navbar">
-      <div class="logo">
-        <img
-          height="40px"
-          src="img/logo.svg"
-          alt="logo"
-          class="logo_svg"
-        /><span class="logo_txt">ItemizeJS</span>
-      </div>
-      <button class="hamburger hamburger--collapse" type="button">
-        <span class="hamburger-box">
-          <span class="hamburger-inner"></span>
-        </span>
-      </button>
-      <div class="nav_items hamb_off">
-        <div class="nav_link nav_item">Getting started</div>
-        <div class="nav_link nav_item">Download</div>
-        <div class="nav_link nav_item">Documentation</div>
-        <div class="nav_link nav_item">Examples</div>
-        <div class="git_txt_logo">
-          <span>Github</span
-          ><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>
+    ItemizeJS - Turn any container's children into manageable items
+  </title>
+  <link rel="stylesheet" href="css/hamb.min.css" />
+  <link rel="stylesheet" href="css/index.css" />
+  <link rel="stylesheet" href="css/codebox.css" />
+  <link rel="stylesheet" href="css/prism.css" />
+  <link rel="icon" href="img/favicon.ico" />
+  <script src="js/itemize.js"></script>
+  <script src="js/example_itemize.js"></script>
+  <script src="js/anime.min.js"></script>
+  <script src="js/titleAnimated.js"></script>
+  <script src="js/prism.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/resize.js"></script>
+</head>
+
+<body>
+  <div id="navbar">
+    <a href="index.html" class="logo">
+      <img height="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span class="logo_txt">ItemizeJS</span>
+    </a>
+    <button class="hamburger hamburger--collapse" type="button">
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="nav_items hamb_off">
+      <a href="docs.html" class="nav_link nav_item">Getting started</a>
+      <a href="docs.html" class="nav_link nav_item">Download</a>
+      <a href="docs.html" class="nav_link nav_item">Documentation</a>
+      <a href="index.html" class="nav_link nav_item">Examples</a>
+      <a href="https://github.com/Kosmoon/itemizejs" class="git_txt_logo">
+        <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
+      </a>
+      <img class="nav_link git_logo" src="img/GitHub-Mark.png" alt="git logo" />
+    </div>
+  </div>
+  <section class="main_section">
+    <div class="main_top">
+      <div class="logo_title">
+        <img height="24px" src="img/mouse.png" alt="mouse" class="mouse" />
+        <div class="first_part">Itemize</div>
+        <div class="js_j">
+          J
+          <div class="close"></div>
         </div>
-        <img
-          class="nav_link git_logo"
-          src="img/GitHub-Mark.png"
-          alt="git logo"
-        />
+        <div class="js_s">
+          S
+          <div class="close"></div>
+        </div>
+      </div>
+      <h1 class="description_title">
+        Turn any container's children <br />
+        into manageable items
+      </h1>
+      <div class="btn_container">
+        <button class="main_btn g_started">Getting started</button>
+        <button class="main_btn ddl">Download</button>
+        <button class="main_btn doc">Documentation</button>
+      </div>
+      <div class="created_by">Created by Kosmoon</div>
+    </div>
+    <div class="main_bottom">
+      <div class="description">
+        ItemizeJS is a Javascript library which transforms any container’s
+        children into manageable items in just two lines of code.
       </div>
     </div>
-    <section class="main_section">
-      <div class="main_top">
-        <div class="logo_title">
-          <img height="24px" src="img/mouse.png" alt="mouse" class="mouse" />
-          <div class="first_part">Itemize</div>
-          <div class="js_j">
-            J
-            <div class="close"></div>
+  </section>
+  <section class="second_section">
+    <div class="example_title ex_text">Basic usage.</div>
+    <div class="example_desc ex_text">
+      Without specifying a target, the "apply" function will target any
+      elements which has the "itemize" attribute.<br />
+      Click the cross to remove an item.
+    </div>
+    <div class="example">
+      <div class="codebox code">
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="html_js_tab">
+          <div class="html_tab tab">
+            <img height="21px" src="img/html5.png" alt="html icon" />
+            <span>Html</span>
           </div>
-          <div class="js_s">
-            S
-            <div class="close"></div>
+          <div class="javascript_tab tab">
+            <img height="21px" src="img/javascript.png" alt="javascript icon" />
+            <span>Javascript</span>
           </div>
         </div>
-        <h1 class="description_title">
-          Turn any container's children <br />
-          into manageable items
-        </h1>
-        <div class="btn_container">
-          <button class="main_btn g_started">Getting started</button>
-          <button class="main_btn ddl">Download</button>
-          <button class="main_btn doc">Documentation</button>
-        </div>
-        <div class="created_by">Created by Kosmoon</div>
-      </div>
-      <div class="main_bottom">
-        <div class="description">
-          ItemizeJS is a Javascript library which transforms any container’s
-          children into manageable items in just two lines of code.
-        </div>
-      </div>
-    </section>
-    <section class="second_section">
-      <div class="example_title ex_text">Basic usage.</div>
-      <div class="example_desc ex_text">
-        Without specifying a target, the "apply" function will target any
-        elements which has the "itemize" attribute.<br />
-        Click the cross to remove an item.
-      </div>
-      <div class="example">
-        <div class="codebox code">
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-          </div>
-          <div class="html_js_tab">
-            <div class="html_tab tab">
-              <img height="21px" src="img/html5.png" alt="html icon" />
-              <span>Html</span>
-            </div>
-            <div class="javascript_tab tab">
-              <img
-                height="21px"
-                src="img/javascript.png"
-                alt="javascript icon"
-              />
-              <span>Javascript</span>
-            </div>
-          </div>
-          <div class="code_content">
-            <div class="html_content">
-              <pre><code class="language-html">&lt;div itemize class="container">
+        <div class="code_content">
+          <div class="html_content">
+            <pre><code class="language-html">&lt;div itemize class="container">
   &lt;div class="item">ITEM 1&lt;/div>
   &lt;div class="item">ITEM 2&lt;/div>
   &lt;div class="item">ITEM 3&lt;/div>
@@ -128,71 +115,62 @@
     background-color: #c8c7c7;
   } 
 &lt;/style></code></pre>
-            </div>
-            <div class="js_content">
-              <pre><code class="language-javascript">var itemManager = new Itemize();
+          </div>
+          <div class="js_content">
+            <pre><code class="language-javascript">var itemManager = new Itemize();
 
 itemManager.apply();
             </code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="codebox result">
-          <div class="refresh_btn refresh_1">
-            <img
-              width="30px"
-              src="img/refresh_icon.png"
-              alt="refresh icon"
-              class="refresh_icon"
-            />
-          </div>
-
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-          </div>
-          <div class="result_content">
-            <div itemize class="example1_container">
-              <div class="item">ITEM 1</div>
-              <div class="item">ITEM 2</div>
-              <div class="item">ITEM 3</div>
-              <div class="item">ITEM 4</div>
-            </div>
           </div>
         </div>
       </div>
+      <div class="codebox result">
+        <div class="refresh_btn refresh_1">
+          <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
+        </div>
 
-      <div class="example_title ex_text">
-        Specified target, modal confirm, notification message.
-      </div>
-      <div class="example_desc ex_text">
-        Read the LINK(documentation)LINK for more information on the options.
-      </div>
-      <div class="example">
-        <div class="codebox code">
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="result_content">
+          <div itemize class="example1_container">
+            <div class="item">ITEM 1</div>
+            <div class="item">ITEM 2</div>
+            <div class="item">ITEM 3</div>
+            <div class="item">ITEM 4</div>
           </div>
-          <div class="html_js_tab">
-            <div class="html_tab tab">
-              <img height="21px" src="img/html5.png" alt="html icon" />
-              <span>Html</span>
-            </div>
-            <div class="javascript_tab tab">
-              <img
-                height="21px"
-                src="img/javascript.png"
-                alt="javascript icon"
-              />
-              <span>Javascript</span>
-            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example_title ex_text">
+      Specified target, modal confirm, notification message.
+    </div>
+    <div class="example_desc ex_text">
+      Read the LINK(documentation)LINK for more information on the options.
+    </div>
+    <div class="example">
+      <div class="codebox code">
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="html_js_tab">
+          <div class="html_tab tab">
+            <img height="21px" src="img/html5.png" alt="html icon" />
+            <span>Html</span>
           </div>
-          <div class="code_content">
-            <div class="html_content">
-              <pre><code class="language-html">&lt;div class="container">
+          <div class="javascript_tab tab">
+            <img height="21px" src="img/javascript.png" alt="javascript icon" />
+            <span>Javascript</span>
+          </div>
+        </div>
+        <div class="code_content">
+          <div class="html_content">
+            <pre><code class="language-html">&lt;div class="container">
   &lt;div class="cat">
     &lt;img src="cat1.jpeg">
   &lt;/div>
@@ -211,9 +189,9 @@ itemManager.apply();
     margin: 4px
   } 
 &lt;/style></code></pre>
-            </div>
-            <div class="js_content scrollable">
-              <pre><code class="language-javascript">var itemManager = new Itemize();
+          </div>
+          <div class="js_content">
+            <pre><code class="language-javascript">var itemManager = new Itemize();
 
 itemManager.apply('.container', { 
   modalConfirm: true,
@@ -225,66 +203,57 @@ itemManager.apply('.container', {
   removeBtnBgColor: "#ffffff"
 });
             </code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="codebox result">
-          <div class="refresh_btn refresh_2">
-            <img
-              width="30px"
-              src="img/refresh_icon.png"
-              alt="refresh icon"
-              class="refresh_icon"
-            />
-          </div>
-
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-          </div>
-          <div class="result_content">
-            <div class="example2_container">
-              <div class="cat"><img src="img/cat1.jpeg" alt="" /></div>
-              <div class="cat"><img src="img/cat2.jpeg" alt="" /></div>
-              <div class="cat"><img src="img/cat3.jpeg" alt="" /></div>
-              <div class="cat"><img src="img/cat4.jpeg" alt="" /></div>
-            </div>
           </div>
         </div>
       </div>
+      <div class="codebox result">
+        <div class="refresh_btn refresh_2">
+          <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
+        </div>
 
-      <div class="example_title ex_text">Adding items.</div>
-      <div class="example_desc ex_text">
-        Itemized containers will automatically itemize and animate newly added
-        elements.<br />You can disable this globally by setting the
-        "itemizeAddedElement" option to "false", or for a single element with
-        the attribute "notItemize".
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="result_content">
+          <div class="example2_container">
+            <div class="cat"><img src="img/cat1.jpeg" alt="" /></div>
+            <div class="cat"><img src="img/cat2.jpeg" alt="" /></div>
+            <div class="cat"><img src="img/cat3.jpeg" alt="" /></div>
+            <div class="cat"><img src="img/cat4.jpeg" alt="" /></div>
+          </div>
+        </div>
       </div>
-      <div class="example">
-        <div class="codebox code">
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
+    </div>
+
+    <div class="example_title ex_text">Adding items.</div>
+    <div class="example_desc ex_text">
+      Itemized containers will automatically itemize and animate newly added
+      elements.<br />You can disable this globally by setting the
+      "itemizeAddedElement" option to "false", or for a single element with
+      the attribute "notItemize".
+    </div>
+    <div class="example">
+      <div class="codebox code">
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="html_js_tab">
+          <div class="html_tab tab">
+            <img height="21px" src="img/html5.png" alt="html icon" />
+            <span>Html</span>
           </div>
-          <div class="html_js_tab">
-            <div class="html_tab tab">
-              <img height="21px" src="img/html5.png" alt="html icon" />
-              <span>Html</span>
-            </div>
-            <div class="javascript_tab tab">
-              <img
-                height="21px"
-                src="img/javascript.png"
-                alt="javascript icon"
-              />
-              <span>Javascript</span>
-            </div>
+          <div class="javascript_tab tab">
+            <img height="21px" src="img/javascript.png" alt="javascript icon" />
+            <span>Javascript</span>
           </div>
-          <div class="code_content">
-            <div class="html_content">
-              <pre><code class="language-html">&lt;div itemize class="container">
+        </div>
+        <div class="code_content">
+          <div class="html_content">
+            <pre><code class="language-html">&lt;div itemize class="container">
   &lt;button notItemize class="add_btn">
     Add DOM element
   &lt;/button>
@@ -304,9 +273,9 @@ itemManager.apply('.container', {
     text-align: center;
   } 
 &lt;/style></code></pre>
-            </div>
-            <div class="js_content scrollable">
-              <pre><code class="language-javascript">var itemManager = new Itemize();
+          </div>
+          <div class="js_content">
+            <pre><code class="language-javascript">var itemManager = new Itemize();
 
 itemManager.apply({
   showAddNotifications: true
@@ -321,66 +290,57 @@ btn.addEventListener("click", function() {
   container.appendChild(newElement);
 });
             </code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="codebox result">
-          <div class="refresh_btn refresh_3">
-            <img
-              width="30px"
-              src="img/refresh_icon.png"
-              alt="refresh icon"
-              class="refresh_icon"
-            />
-          </div>
-
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-          </div>
-          <div class="result_content">
-            <div itemize class="example3_container">
-              <button notItemize class="add_btn">Add a DOM element</button>
-              <div class="item">ITEM</div>
-              <div class="item">ITEM</div>
-            </div>
           </div>
         </div>
       </div>
+      <div class="codebox result">
+        <div class="refresh_btn refresh_3">
+          <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
+        </div>
 
-      <div class="example_title ex_text">
-        Custom remove button and custom animation.
-      </div>
-      <div class="example_desc ex_text">
-        You can replace the default cross with your own button with the option:
-        "removeBtnClass". Several options can control the animation, here is a
-        few:
-      </div>
-      <div class="example">
-        <div class="codebox code">
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="result_content">
+          <div itemize class="example3_container">
+            <button notItemize class="add_btn">Add a DOM element</button>
+            <div class="item">ITEM</div>
+            <div class="item">ITEM</div>
           </div>
-          <div class="html_js_tab">
-            <div class="html_tab tab">
-              <img height="21px" src="img/html5.png" alt="html icon" />
-              <span>Html</span>
-            </div>
-            <div class="javascript_tab tab">
-              <img
-                height="21px"
-                src="img/javascript.png"
-                alt="javascript icon"
-              />
-              <span>Javascript</span>
-            </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="example_title ex_text">
+      Custom remove button and custom animation.
+    </div>
+    <div class="example_desc ex_text">
+      You can replace the default cross with your own button with the option:
+      "removeBtnClass". Several options can control the animation, here is a
+      few:
+    </div>
+    <div class="example">
+      <div class="codebox code">
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="html_js_tab">
+          <div class="html_tab tab">
+            <img height="21px" src="img/html5.png" alt="html icon" />
+            <span>Html</span>
           </div>
-          <div class="code_content">
-            <div class="html_content">
-              <pre><code class="language-html">&lt;div itemize class="container">
+          <div class="javascript_tab tab">
+            <img height="21px" src="img/javascript.png" alt="javascript icon" />
+            <span>Javascript</span>
+          </div>
+        </div>
+        <div class="code_content">
+          <div class="html_content">
+            <pre><code class="language-html">&lt;div itemize class="container">
   &lt;div>
     ITEM 1
     &lt;button class="rm_btn">
@@ -411,45 +371,41 @@ btn.addEventListener("click", function() {
     text-align: center;
   } 
 &lt;/style></code></pre>
-            </div>
-            <div class="js_content scrollable">
-              <pre><code class="language-javascript">var itemManager = new Itemize();
+          </div>
+          <div class="js_content">
+            <pre><code class="language-javascript">var itemManager = new Itemize();
 
 itemManager.apply({
   removeBtnClass: "rm_btn",
-  flipAnimDuration: 1000,
+  animDuration: 1000,
   animRemoveTranslateX: 200,
   animRemoveTranslateY: 100
 });
 
             </code></pre>
-            </div>
-          </div>
-        </div>
-        <div class="codebox result">
-          <div class="refresh_btn refresh_4">
-            <img
-              width="30px"
-              src="img/refresh_icon.png"
-              alt="refresh icon"
-              class="refresh_icon"
-            />
-          </div>
-
-          <div class="codebox_top">
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-            <div class="round_btn"></div>
-          </div>
-          <div class="result_content">
-            <div class="example4_container">
-              <div>ITEM 1<br /><button class="rm_btn">Remove me</button></div>
-              <div>ITEM 2<br /><button class="rm_btn">Remove me</button></div>
-              <div>ITEM 3<br /><button class="rm_btn">Remove me</button></div>
-            </div>
           </div>
         </div>
       </div>
-    </section>
-  </body>
+      <div class="codebox result">
+        <div class="refresh_btn refresh_4">
+          <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
+        </div>
+
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="result_content">
+          <div class="example4_container">
+            <div>ITEM 1<br /><button class="rm_btn">Remove me</button></div>
+            <div>ITEM 2<br /><button class="rm_btn">Remove me</button></div>
+            <div>ITEM 3<br /><button class="rm_btn">Remove me</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
 </html>
