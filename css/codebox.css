@@ -282,4 +282,43 @@
     .tab:nth-child(2) {
         margin-left: 0%;
     }
+
+
+    .code_content div {
+        height: 100%;
+        width: 100%;
+        background-color: #fdf6e3;
+    }
+
+    .code_content div.hide {
+        display: none
+    }
+
+    .tab {
+        cursor: pointer;
+        max-width: 150px;
+    }
+
+    .tab.selected {
+        background-color: #FDF6E3;
+        border-bottom: solid 2px #FDF6E3;
+        z-index: 150;
+        transform: translateY(2px);
+        -webkit-transform: translateY(2px);
+        -moz-transform: translateY(2px);
+        -ms-transform: translateY(2px);
+        -o-transform: translateY(2px);
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        font-size: 12px;
+        text-align: left;
+        white-space: pre-wrap;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: break-word;
+        line-height: 1.2;
+
+    }
 }

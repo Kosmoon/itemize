@@ -68,11 +68,34 @@ window.addEventListener("load", function() {
     });
   });
 
-  //hamberger menu:
-  var hamb = document.querySelector(".hamburger");
-  hamb.addEventListener("click", function() {
-    var navMenu = document.querySelector(".nav_items");
-    navMenu.classList.toggle("hamb_on");
-    hamb.classList.toggle("is-active");
+  var exampleBtn = document.querySelector(".example_btn");
+  exampleBtn.addEventListener("click", function() {
+    window.scroll({
+      top: document.querySelector(".second_section").offsetTop,
+      left: 0,
+      behavior: "smooth"
+    });
   });
+
+  if (window.location.href.indexOf("example") !== -1) {
+    window.scroll({
+      top: document.querySelector(".second_section").offsetTop,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
+  if (window.location.href.indexOf("index") !== -1) {
+    var getStartNav = document.querySelector(".get_start_nav");
+    var dlNav = document.querySelector(".dl_nav");
+    var docNav = document.querySelector(".doc_nav");
+    if (window.pageYOffset < 300) {
+      getStartNav.classList.add("off");
+      dlNav.classList.add("off");
+      docNav.classList.add("off");
+    } else {
+      getStartNav.classList.remove("off");
+      dlNav.classList.remove("off");
+      docNav.classList.remove("off");
+    }
+  }
 });

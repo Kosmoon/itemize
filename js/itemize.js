@@ -1447,23 +1447,18 @@ class Itemize {
   }
   flipRemove(elem) {
     elem.onclick = null;
-    // elem.parentElement.appendChild(elem);
     let options = elem.parentElement.itemizeOptions;
-    const newPos = elem.getBoundingClientRect();
-    const oldPos = this.elPos[elem.itemizeItemId];
-    const deltaX = oldPos.left - newPos.left;
-    const deltaY = oldPos.top - newPos.top;
     if (elem.animate) {
       elem.animate(
         [
           {
-            transform: `translate(${deltaX}px, ${deltaY}px)`,
+            transform: `translate(0px, 0px)`,
             opacity: 1
           },
           {
-            transform: `translate(${deltaX +
-              options.animRemoveTranslateX}px, ${deltaY +
-              options.animRemoveTranslateY}px)`,
+            transform: `translate(${options.animRemoveTranslateX}px, ${
+              options.animRemoveTranslateY
+            }px)`,
             opacity: 0
           }
         ],
@@ -1482,8 +1477,8 @@ class Itemize {
           },
           {
             transform: {
-              translateX: deltaX,
-              translateY: deltaY,
+              translateX: 0,
+              translateY: 0,
               unit: "px"
             }
           }
@@ -1494,8 +1489,8 @@ class Itemize {
           },
           {
             transform: {
-              translateX: deltaX + options.animRemoveTranslateX,
-              translateY: deltaY + options.animRemoveTranslateY,
+              translateX: options.animRemoveTranslateX,
+              translateY: options.animRemoveTranslateY,
               unit: "px"
             }
           }
@@ -1521,27 +1516,11 @@ class Itemize {
   }
   flipAdd(elem) {
     elem.classList.remove("itemize_hide");
+    console.log("ey");
     elem.inAddAnim = true;
-    this.elPos[elem.itemizeItemId] =
-      elem.oldAddPos || elem.getBoundingClientRect();
     let options = elem.parentElement.itemizeOptions;
-    const newPos = elem.getBoundingClientRect();
-    const oldPos = elem.oldAddPos || this.elPos[elem.itemizeItemId];
-    const deltaX = oldPos.left - newPos.left;
-    const deltaY = oldPos.top - newPos.top;
-    let deltaW = oldPos.width / newPos.width;
-    let deltaH = oldPos.height / newPos.height;
-    if (isNaN(deltaW) || deltaW === Infinity) {
-      deltaW = 1;
-    }
-    if (isNaN(deltaH) || deltaH === Infinity) {
-      deltaH = 1;
-    }
-    elem.newAddPos = newPos;
-    elem.oldAddPos = oldPos;
-    let translateXStart = deltaX + options.animAddTranslateX;
-    let translateYStart = deltaY + options.animAddTranslateY;
-
+    let translateXStart = options.animAddTranslateX;
+    let translateYStart = options.animAddTranslateY;
     if (elem.animate) {
       elem.animate(
         [
@@ -1556,8 +1535,7 @@ class Itemize {
         ],
         {
           duration: options.animDuration,
-          easing: options.animEasing,
-          fill: "both"
+          easing: options.animEasing
         }
       );
     } else {
@@ -1595,24 +1573,21 @@ class Itemize {
       elem.inAddAnim = false;
       elem.newAddPos = null;
       elem.oldPos = null;
+      elem.style.transform = "none";
+      elem.style.opacity = 1;
     }, options.animDuration);
   }
   flipRead(elems) {
-    // this.elPos = {};
     for (let i = 0; i < elems.length; i++) {
       this.elPos[elems[i].itemizeItemId] = elems[i].getBoundingClientRect();
     }
   }
-
   flipPlay(elems, duration) {
     for (let i = 0; i < elems.length; i++) {
-      if (
-        !elems[i].inAddAnim &&
-        elems[i].parentNode &&
-        elems[i].parentNode.itemizeOptions
-      ) {
-        const newPos = elems[i].getBoundingClientRect();
-        const oldPos = this.elPos[elems[i].itemizeItemId];
+      let el = elems[i];
+      if (!el.inAddAnim && el.parentNode && el.parentNode.itemizeOptions) {
+        const newPos = el.getBoundingClientRect();
+        const oldPos = this.elPos[el.itemizeItemId];
         const deltaX = oldPos.left - newPos.left;
         const deltaY = oldPos.top - newPos.top;
         let deltaW = oldPos.width / newPos.width;
@@ -1625,8 +1600,8 @@ class Itemize {
         }
 
         if (deltaX !== 0 || deltaY !== 0 || deltaW !== 1 || deltaH !== 1) {
-          if (elems[i].animate) {
-            elems[i].animate(
+          if (el.animate) {
+            el.animate(
               [
                 {
                   transform: `translate(${deltaX}px, ${deltaY}px)`
@@ -1637,13 +1612,12 @@ class Itemize {
               ],
               {
                 duration: duration,
-                easing: elems[i].parentNode.itemizeOptions.animEasing,
-                fill: "both"
+                easing: el.parentNode.itemizeOptions.animEasing
               }
             );
           } else {
             this.animateRAF(
-              elems[i],
+              el,
               [
                 {
                   transform: {
@@ -1665,6 +1639,11 @@ class Itemize {
               duration
             );
           }
+          setTimeout(() => {
+            if (el) {
+              el.style.transform = "none";
+            }
+          }, duration);
         }
       }
     }
@@ -1678,19 +1657,19 @@ class Itemize {
         removeBtnThickness: 2,
         removeBtnColor: "#565C67",
         removeBtnHoverColor: "#ffffff",
-        removeBtnBgColor: "#d1cfcf91",
-        removeBtnBgHoverColor: "#959595",
         removeBtnSharpness: "0px",
         removeBtnPosition: "top-right",
         removeBtnMargin: 2,
         removeBtnCircle: true,
+        removeBtnBgColor: "#d1cfcf91",
+        removeBtnBgHoverColor: "#959595",
         removeBtnClass: null,
         modalConfirm: false,
         modalText: "Are you sure to remove this item?",
-        showRemoveNotifications: false,
-        showAddNotifications: false,
         removeNotificationText: "Item removed",
         addNotificationText: "Item added",
+        showRemoveNotifications: false,
+        showAddNotifications: false,
         notificationPosition: "bottom-right",
         notificationTimer: 4000,
         anim: true,
@@ -1700,10 +1679,10 @@ class Itemize {
         animRemoveTranslateY: -100,
         animAddTranslateX: 0,
         animAddTranslateY: -100,
+        beforeRemove: null,
         outlineItemOnHover: false,
         nestingLevel: 1,
         itemizeAddedElement: true,
-        beforeRemove: null,
         onAddItem: null
       };
       if (this.globalOptions) {

@@ -28,7 +28,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 100;
+  z-index: 200;
   transition: top 0.3s ease-in-out;
   -webkit-transition: top 0.3s ease-in-out;
   -moz-transition: top 0.3s ease-in-out;
@@ -64,12 +64,17 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bolder;
+
   letter-spacing: 2px;
 }
 
 .logo_svg {
   margin-right: 10px
+}
+
+.portfolio_link {
+  color: #FF8000;
+  text-decoration: none
 }
 
 .hamburger {
@@ -82,6 +87,7 @@ body {
 }
 
 .nav_items {
+  z-index: 200;
   display: flex;
   align-items: center
 }
@@ -92,6 +98,23 @@ body {
   padding: 15px;
   border: solid 1px transparent;
   border-radius: 4px;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.15s ease-in-out, opacity 0.15s ease-in-out, visibility 0.5s ease-in-out;
+  -webkit-transition: opacity 0.15s ease-in-out, opacity 0.15s ease-in-out, visibility 0.5s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out, opacity 0.15s ease-in-out, visibility 0.5s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out, opacity 0.15s ease-in-out, visibility 0.5s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out, opacity 0.15s ease-in-out, visibility 0.5s ease-in-out;
+}
+
+.nav_item.off {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+  -webkit-transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+  -moz-transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+  -ms-transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+  -o-transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
 }
 
 .nav_item:hover {
@@ -114,6 +137,7 @@ body {
   margin-left: 20px;
   margin-right: 100px;
   cursor: pointer;
+  max-height: 33px;
 }
 
 .main_section {
@@ -282,7 +306,7 @@ body {
 @media screen and (max-width: 900px) {
   .logo {
     margin: 0;
-    font-size: 5vw;
+    font-size: 25px;
     margin-right: auto;
     margin-left: 10px;
   }
@@ -299,8 +323,8 @@ body {
   .git_logo {
     margin: 0;
     margin-right: 10px;
-    max-height: 44px;
     height: 6vw;
+    max-height: 33px;
   }
 
   .hamburger {
@@ -327,7 +351,7 @@ body {
   .nav_items {
     background-color: #7a8d99;
     position: absolute;
-    right: -80vh;
+    right: -80vw;
     top: 70px;
     width: 70vw;
     height: 100vh;
@@ -336,10 +360,17 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     transition: right 0.5s ease-in-out;
-    -webkit-transition: right 0.5s ease-in-out;
-    -moz-transition: right 0.5s ease-in-out;
-    -ms-transition: right 0.5s ease-in-out;
-    -o-transition: right 0.5s ease-in-out;
+
+  }
+
+  .nav_item.off {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.15s ease-in-out;
+    -webkit-transition: opacity 0.15s ease-in-out;
+    -moz-transition: opacity 0.15s ease-in-out;
+    -ms-transition: opacity 0.15s ease-in-out;
+    -o-transition: opacity 0.15s ease-in-out;
   }
 
   .hamburger {
@@ -369,6 +400,7 @@ body {
     -moz-border-radius: 0px;
     -ms-border-radius: 0px;
     -o-border-radius: 0px;
+
   }
 
   .nav_item:hover {
@@ -392,8 +424,9 @@ body {
   .main_btn {
     font-size: 12px;
     width: 30%;
-    height: 50px;
-    margin: 0;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px 5px 0px 5px;
   }
 
   .description_title {

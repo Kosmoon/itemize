@@ -9,16 +9,22 @@ window.addEventListener("load", function() {
       }
       this.classList.add("selected");
       var selectedOption = this.textContent;
-      var optionsTd = document.querySelectorAll(".table_options .name");
-      var optionsTr = document.querySelectorAll(".table_options tr");
+      var optionsTd = document.querySelectorAll(
+        ".table_options .name, .table_public_prop .name"
+      );
+      var optionsTr = document.querySelectorAll(
+        ".table_options tr, .table_public_prop tr"
+      );
       for (let h = 0; h < optionsTr.length; h++) {
         optionsTr[h].classList.remove("highlight");
       }
       for (let j = 0; j < optionsTd.length; j++) {
+        let tableClassName =
+          optionsTd[j].parentNode.parentNode.parentNode.classList[0];
         if (optionsTd[j].textContent === selectedOption) {
           window.scroll({
             top:
-              document.querySelector(".table_options").offsetTop +
+              document.querySelector("." + tableClassName).offsetTop +
               optionsTd[j].offsetTop -
               window.innerHeight * 0.5 +
               optionsTd[j].parentNode.offsetHeight * 0.5,
@@ -45,6 +51,13 @@ window.addEventListener("load", function() {
       if (selectedOption === "Options") {
         window.scroll({
           top: document.querySelector(".options").offsetTop - 90,
+          left: 0,
+          behavior: "smooth"
+        });
+      }
+      if (selectedOption === "Public Properties") {
+        window.scroll({
+          top: document.querySelector(".public_prop").offsetTop - 90,
           left: 0,
           behavior: "smooth"
         });

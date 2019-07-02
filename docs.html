@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" href="img/favicon.ico" />
+  <link rel="stylesheet" href="css/hamb.min.css" />
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/docs.css" />
   <link rel="stylesheet" href="css/prism2.css" />
@@ -13,7 +14,8 @@
   <script src="js/resize.js"></script>
   <script src="js/prism.js"></script>
   <script src="js/doc_navigation.js"></script>
-  <title>Documentation</title>
+  <script src="js/hamb.js"></script>
+  <title>Itemize - Documentation</title>
 </head>
 
 <body>
@@ -27,10 +29,9 @@
       </span>
     </button>
     <div class="nav_items hamb_off">
-      <div class="nav_link nav_item">Getting started</div>
-      <div class="nav_link nav_item">Download</div>
-      <div class="nav_link nav_item">Documentation</div>
-      <div class="nav_link nav_item">Examples</div>
+      <a href="info.html" class="nav_link nav_item">Getting started</a>
+      <a href="info.html" class="nav_link nav_item">Download</a>
+      <a href="index.html?example" class="nav_link nav_item">Examples</a>
       <div class="git_txt_logo">
         <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
       </div>
@@ -38,7 +39,7 @@
     </div>
   </div>
   <div id="main_content">
-    <div id="left_content">
+    <div id="left_content" class="off">
       <h1>Public Methods</h1>
       <h2>apply</h2>
       <h2>cancel</h2>
@@ -77,6 +78,9 @@
       <h2>itemizeAddedElement</h2>
       <h2>onAddItem</h2>
       <h1>Public Properties</h1>
+      <h2>containers</h2>
+      <h2>items</h2>
+      <h2>globalOptions</h2>
     </div>
     <div id="right_content">
       <div class="separator"></div>
@@ -115,7 +119,7 @@
             <td class="name">options</td>
             <td class="type">Object</td>
             <td class="default">see default options</td>
-            <td>fds</td>
+            <td>Custom options</td>
           </tr>
         </tbody>
       </table>
@@ -163,7 +167,7 @@
         in HTML with attributes. <br /><br />
         Example:
         <pre><code class="language-html">&lt;div itemize class="container" modalConfirm="true" modalText="Are you really sure?" notificationTimer="2000"></code></pre>
-        <br />
+        <br /><br />
         Or in the "apply" function's parameter. <br /><br />
         Example:
         <pre><code class="language-javascript">var itemManager = new Itemize;
@@ -178,7 +182,7 @@
   modalText: "Are you really sure?",
   notificationTimer: 2000
  });</code></pre>
-      </h1>
+      </h1><br />
       <h1 class="under_h1">Properties:</h1>
       <table class="table_options">
         <thead>
@@ -517,10 +521,10 @@
               Function called when an item is about to be removed. It receives
               the item to remove as parameter (DOM element).<br /><br />
               Synchronous: return "true" if you want to actually remove the
-              item and "false" if you don't want to remove it. <br />
+              item or "false" if you don't want to remove it. <br />
               <br />
               Asynchronous: return a new promise and call resolve() if you
-              want to actually remove the item and reject() if you don't want
+              want to actually remove the item or reject() if you don't want
               to remove it.<br /><br />
               Example (Synchronous): <br />
               <pre><code class="language-javascript">var itemManager = new Itemize();
@@ -554,6 +558,39 @@
             <td>
               Function called when an item is added. It receives the added
               item as parameter (DOM element).
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="separator"></div>
+      <h1 class="public_prop">Public properties</h1>
+
+      <table class="table_public_prop">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="name">containers</td>
+            <td class="type">Array</td>
+            <td>
+              Array of itemized containers
+            </td>
+          </tr>
+          <tr>
+            <td class="name">items</td>
+            <td class="type">Array</td>
+            <td>Array of items</td>
+          </tr>
+          <tr>
+            <td class="name">globalOptions</td>
+            <td class="type">Object</td>
+            <td>Options applied globally. Can be specified at the initialization of the Itemize object.<br>Local options
+              specified in the parameters of the "apply" function or in the HTML attributes override global options.
             </td>
           </tr>
         </tbody>

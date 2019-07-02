@@ -1,0 +1,153 @@
+body {
+    background: #353639;
+}
+
+.main_content {
+    margin-top: 70px;
+    background: #353639;
+    color: #EFEFEF;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 50px
+}
+
+.dl,
+.getting_started {
+    display: flex;
+    align-items: flex-end
+}
+
+h1 {
+    font-weight: 100
+}
+
+h2 {
+    font-weight: 100;
+    font-size: 26px;
+    margin-bottom: 15px;
+    margin-top: 35px
+}
+
+h3 {
+    font-weight: 100;
+    font-size: 18px;
+    margin-bottom: 5px
+}
+
+pre {
+    margin-bottom: 20px;
+    max-width: 900px;
+}
+
+.download_txt,
+.getting_txt {
+    font-size: 35px;
+    margin-left: 8px;
+    line-height: 35px
+}
+
+.version {
+    font-size: 20px;
+    margin-left: 8px
+}
+
+.separator {
+    width: 33%;
+    height: 1px;
+    background-color: rgba(240, 248, 255, 0.397);
+    margin: auto;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.btn_dl_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 70px;
+    margin-bottom: 70px;
+
+}
+
+.btn_dl:hover {
+    background-color: #C1151D;
+    transition: background-color 0.3s ease-in-out;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -ms-transition: background-color 0.3s ease-in-out;
+    -o-transition: background-color 0.3s ease-in-out;
+}
+
+.btn_dl {
+    cursor: pointer;
+    margin: 0px 5px 0px 5px;
+    padding: 15px;
+    border: solid 1px white;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+    background-color: transparent;
+    transition: background-color 0.3s ease-in-out;
+    -webkit-transition: background-color 0.3s ease-in-out;
+    -moz-transition: background-color 0.3s ease-in-out;
+    -ms-transition: background-color 0.3s ease-in-out;
+    -o-transition: background-color 0.3s ease-in-out;
+    font-size: 18px
+}
+
+.btns {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 20px
+}
+
+@media screen and (max-width: 900px) {
+    .main_content {
+        padding: 10px;
+        padding-top: 40px
+    }
+
+    .download_txt {
+        font-size: 25px;
+        margin-left: 8px;
+        line-height: 25px
+    }
+
+    .btn_dl {
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .btn_dl {
+        font-size: 16px;
+        text-align: center;
+        margin: 0px 3px 0px 3px;
+        padding: 4px;
+        width: 33%;
+        height: 50px;
+    }
+
+    .version {
+        font-size: 15px;
+        margin-left: 8px
+    }
+
+    .dl_icon {
+        height: 25px;
+    }
+
+    .dl,
+    .getting_started {
+        justify-content: center
+    }
+
+    code[class*="language-"],
+    pre[class*="language-"] {
+        font-size: 12px
+    }
+}

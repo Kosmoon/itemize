@@ -10,8 +10,8 @@
   </title>
   <link rel="stylesheet" href="css/hamb.min.css" />
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/codebox.css" />
   <link rel="stylesheet" href="css/prism.css" />
+  <link rel="stylesheet" href="css/codebox.css" />
   <link rel="icon" href="img/favicon.ico" />
   <script src="js/itemize.js"></script>
   <script src="js/example_itemize.js"></script>
@@ -20,6 +20,8 @@
   <script src="js/prism.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/resize.js"></script>
+  <script src="js/codebox.js"></script>
+  <script src="js/hamb.js"></script>
 </head>
 
 <body>
@@ -33,10 +35,10 @@
       </span>
     </button>
     <div class="nav_items hamb_off">
-      <a href="docs.html" class="nav_link nav_item">Getting started</a>
-      <a href="docs.html" class="nav_link nav_item">Download</a>
-      <a href="docs.html" class="nav_link nav_item">Documentation</a>
-      <a href="index.html" class="nav_link nav_item">Examples</a>
+      <a href="info.html" class="nav_link nav_item get_start_nav off">Getting started</a>
+      <a href="info.html" class="nav_link nav_item dl_nav off">Download</a>
+      <a href="docs.html" class="nav_link nav_item doc_nav off">Documentation</a>
+      <div class="nav_link nav_item example_btn">Examples</div>
       <a href="https://github.com/Kosmoon/itemizejs" class="git_txt_logo">
         <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
       </a>
@@ -62,11 +64,11 @@
         into manageable items
       </h1>
       <div class="btn_container">
-        <button class="main_btn g_started">Getting started</button>
-        <button class="main_btn ddl">Download</button>
-        <button class="main_btn doc">Documentation</button>
+        <button onclick="window.location ='info.html'" class="main_btn g_started">Getting started</button>
+        <button onclick="window.location ='info.html'" class="main_btn ddl">Download</button>
+        <button onclick="window.location ='docs.html'" class="main_btn doc">Documentation</button>
       </div>
-      <div class="created_by">Created by Kosmoon</div>
+      <div class="created_by">Created by <a class="portfolio_link" href="#">Kosmoon</a></div>
     </div>
     <div class="main_bottom">
       <div class="description">
@@ -94,13 +96,13 @@
             <img height="21px" src="img/html5.png" alt="html icon" />
             <span>Html</span>
           </div>
-          <div class="javascript_tab tab">
+          <div class="javascript_tab tab selected">
             <img height="21px" src="img/javascript.png" alt="javascript icon" />
             <span>Javascript</span>
           </div>
         </div>
         <div class="code_content">
-          <div class="html_content">
+          <div class="html_content hide">
             <pre><code class="language-html">&lt;div itemize class="container">
   &lt;div class="item">ITEM 1&lt;/div>
   &lt;div class="item">ITEM 2&lt;/div>
@@ -119,8 +121,7 @@
           <div class="js_content">
             <pre><code class="language-javascript">var itemManager = new Itemize();
 
-itemManager.apply();
-            </code></pre>
+itemManager.apply();</code></pre>
           </div>
         </div>
       </div>
@@ -163,13 +164,13 @@ itemManager.apply();
             <img height="21px" src="img/html5.png" alt="html icon" />
             <span>Html</span>
           </div>
-          <div class="javascript_tab tab">
+          <div class="javascript_tab tab  selected">
             <img height="21px" src="img/javascript.png" alt="javascript icon" />
             <span>Javascript</span>
           </div>
         </div>
         <div class="code_content">
-          <div class="html_content">
+          <div class="html_content hide">
             <pre><code class="language-html">&lt;div class="container">
   &lt;div class="cat">
     &lt;img src="cat1.jpeg">
@@ -246,13 +247,13 @@ itemManager.apply('.container', {
             <img height="21px" src="img/html5.png" alt="html icon" />
             <span>Html</span>
           </div>
-          <div class="javascript_tab tab">
+          <div class="javascript_tab tab  selected">
             <img height="21px" src="img/javascript.png" alt="javascript icon" />
             <span>Javascript</span>
           </div>
         </div>
         <div class="code_content">
-          <div class="html_content">
+          <div class="html_content hide">
             <pre><code class="language-html">&lt;div itemize class="container">
   &lt;button notItemize class="add_btn">
     Add DOM element
@@ -333,13 +334,13 @@ btn.addEventListener("click", function() {
             <img height="21px" src="img/html5.png" alt="html icon" />
             <span>Html</span>
           </div>
-          <div class="javascript_tab tab">
+          <div class="javascript_tab tab selected">
             <img height="21px" src="img/javascript.png" alt="javascript icon" />
             <span>Javascript</span>
           </div>
         </div>
         <div class="code_content">
-          <div class="html_content">
+          <div class="html_content hide">
             <pre><code class="language-html">&lt;div itemize class="container">
   &lt;div>
     ITEM 1
