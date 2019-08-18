@@ -2,9 +2,9 @@ window.addEventListener("load", function() {
   var menuItems = document.querySelectorAll(
     "#left_content h1, #left_content h2"
   );
-  for (let i = 0; i < menuItems.length; i++) {
+  for (var i = 0; i < menuItems.length; i++) {
     menuItems[i].addEventListener("click", function() {
-      for (let z = 0; z < menuItems.length; z++) {
+      for (var z = 0; z < menuItems.length; z++) {
         menuItems[z].classList.remove("selected");
       }
       this.classList.add("selected");
@@ -15,11 +15,11 @@ window.addEventListener("load", function() {
       var optionsTr = document.querySelectorAll(
         ".table_options tr, .table_public_prop tr"
       );
-      for (let h = 0; h < optionsTr.length; h++) {
+      for (var h = 0; h < optionsTr.length; h++) {
         optionsTr[h].classList.remove("highlight");
       }
-      for (let j = 0; j < optionsTd.length; j++) {
-        let tableClassName =
+      for (var j = 0; j < optionsTd.length; j++) {
+        var tableClassName =
           optionsTd[j].parentNode.parentNode.parentNode.classList[0];
         if (optionsTd[j].textContent === selectedOption) {
           window.scroll({

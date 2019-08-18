@@ -1,3 +1,5 @@
+"use strict";
+
 window.addEventListener("load", function() {
   var hamb = document.querySelector(".hamburger");
   hamb.addEventListener("click", function() {
@@ -6,7 +8,8 @@ window.addEventListener("load", function() {
     hamb.classList.toggle("is-active");
   });
   var navItems = document.querySelectorAll(".nav_item");
-  for (let i = 0; i < navItems.length; i++) {
+
+  for (var i = 0; i < navItems.length; i++) {
     navItems[i].addEventListener("click", function() {
       var navMenu = document.querySelector(".nav_items");
       navMenu.classList.remove("hamb_on");

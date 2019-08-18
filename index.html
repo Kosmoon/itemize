@@ -5,15 +5,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="ItemizeJS is a Javascript library which transforms any container’s
+  children into manageable items in just two lines of code." />
+  <meta property="og:title" content="ItemizeJS - Turn any container's children into manageable items." />
+  <meta property="og:description" content="ItemizeJS is a Javascript library which transforms any container’s
+  children into manageable items in just two lines of code.." />
+  <meta property="og:image" content="https://www.itemizejs.com/img/logo.png" />
+  <meta property="og:url" content="https://www.itemizejs.com" />
+  <meta name="twitter:title" content="ItemizeJS - Turn any container's children into manageable items." />
+  <meta name="twitter:description" content="ItemizeJS is a Javascript library which transforms any container’s
+  children into manageable items in just two lines of code." />
+  <meta name="twitter:image" content="https://www.itemizejs.com/img/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>
-    ItemizeJS - Turn any container's children into manageable items
+    ItemizeJS - Turn any container's children into manageable items.
   </title>
   <link rel="stylesheet" href="css/hamb.min.css" />
   <link rel="stylesheet" href="css/index.css" />
-  <link rel="stylesheet" href="css/prism.css" />
+  <link rel="stylesheet" href="css/prism_dark.css" />
   <link rel="stylesheet" href="css/codebox.css" />
   <link rel="icon" href="img/favicon.ico" />
-  <script src="js/itemize.js"></script>
+  <script src="js/bundle-index.js"></script>
+  <!-- <script src="js/itemize.min.js"></script>
   <script src="js/example_itemize.js"></script>
   <script src="js/anime.min.js"></script>
   <script src="js/titleAnimated.js"></script>
@@ -21,13 +34,14 @@
   <script src="js/scroll.js"></script>
   <script src="js/resize.js"></script>
   <script src="js/codebox.js"></script>
-  <script src="js/hamb.js"></script>
+  <script src="js/hamb.js"></script> -->
 </head>
 
 <body>
   <div id="navbar">
     <a href="index.html" class="logo">
-      <img height="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span class="logo_txt">ItemizeJS</span>
+      <img height="40px" width="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span
+        class="logo_txt">ItemizeJS</span>
     </a>
     <button class="hamburger hamburger--collapse" type="button">
       <span class="hamburger-box">
@@ -42,7 +56,8 @@
       <a href="https://github.com/Kosmoon/itemizejs" class="git_txt_logo">
         <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
       </a>
-      <img class="nav_link git_logo" src="img/GitHub-Mark.png" alt="git logo" />
+      <a href="https://github.com/Kosmoon/itemizejs"><img class="nav_link git_logo" src="img/GitHub-Mark.png"
+          alt="git logo" /></a>
     </div>
   </div>
   <section class="main_section">
@@ -64,11 +79,20 @@
         into manageable items
       </h1>
       <div class="btn_container">
-        <button onclick="window.location ='info.html'" class="main_btn g_started">Getting started</button>
-        <button onclick="window.location ='info.html'" class="main_btn ddl">Download</button>
-        <button onclick="window.location ='docs.html'" class="main_btn doc">Documentation</button>
+        <button onclick="window.location ='info.html'" class="main_btn g_started">
+          Getting started
+        </button>
+        <button onclick="window.location ='info.html'" class="main_btn ddl">
+          Download
+        </button>
+        <button onclick="window.location ='docs.html'" class="main_btn doc">
+          Documentation
+        </button>
       </div>
-      <div class="created_by">Created by <a class="portfolio_link" href="#">Kosmoon</a></div>
+      <div class=" created_by_header">
+        Created by
+        <a class="portfolio_link" href="https://www.kosmoon.fr" target="_blank" rel="noopener noreferrer">Kosmoon</a>
+      </div>
     </div>
     <div class="main_bottom">
       <div class="description">
@@ -78,14 +102,14 @@
     </div>
   </section>
   <section class="second_section">
-    <div class="example_title ex_text">Basic usage.</div>
-    <div class="example_desc ex_text">
+    <div class="example_title ex_text reveal translate_up">Basic usage.</div>
+    <div class="example_desc ex_text reveal translate_up reveal translate_up">
       Without specifying a target, the "apply" function will target any
       elements which has the "itemize" attribute.<br />
       Click the cross to remove an item.
     </div>
     <div class="example">
-      <div class="codebox code">
+      <div class="codebox code reveal translate_left">
         <div class="codebox_top">
           <div class="round_btn"></div>
           <div class="round_btn"></div>
@@ -103,7 +127,8 @@
         </div>
         <div class="code_content">
           <div class="html_content hide">
-            <pre><code class="language-html">&lt;div itemize class="container">
+            <pre><code class="language-html">
+&lt;div itemize class="container">
   &lt;div class="item">ITEM 1&lt;/div>
   &lt;div class="item">ITEM 2&lt;/div>
   &lt;div class="item">ITEM 3&lt;/div>
@@ -119,13 +144,14 @@
 &lt;/style></code></pre>
           </div>
           <div class="js_content">
-            <pre><code class="language-javascript">var itemManager = new Itemize();
+            <pre><code class="language-javascript">
+var itemManager = new Itemize();
 
 itemManager.apply();</code></pre>
           </div>
         </div>
       </div>
-      <div class="codebox result">
+      <div class=" codebox result reveal translate_right">
         <div class="refresh_btn refresh_1">
           <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
         </div>
@@ -146,14 +172,15 @@ itemManager.apply();</code></pre>
       </div>
     </div>
 
-    <div class="example_title ex_text">
+    <div class="example_title ex_text reveal translate_up">
       Specified target, modal confirm, notification message.
     </div>
-    <div class="example_desc ex_text">
-      Read the LINK(documentation)LINK for more information on the options.
+    <div class="example_desc ex_text reveal translate_up">
+      Read <a href="./docs.html" class="doc_link">documentation</a> to know
+      more about custom options.
     </div>
     <div class="example">
-      <div class="codebox code">
+      <div class=" codebox code reveal translate_left">
         <div class="codebox_top">
           <div class="round_btn"></div>
           <div class="round_btn"></div>
@@ -171,7 +198,8 @@ itemManager.apply();</code></pre>
         </div>
         <div class="code_content">
           <div class="html_content hide">
-            <pre><code class="language-html">&lt;div class="container">
+            <pre><code class="language-html">
+&lt;div class="container">
   &lt;div class="cat">
     &lt;img src="cat1.jpeg">
   &lt;/div>
@@ -192,7 +220,8 @@ itemManager.apply();</code></pre>
 &lt;/style></code></pre>
           </div>
           <div class="js_content">
-            <pre><code class="language-javascript">var itemManager = new Itemize();
+            <pre><code class="language-javascript">
+var itemManager = new Itemize();
 
 itemManager.apply('.container', { 
   modalConfirm: true,
@@ -207,7 +236,7 @@ itemManager.apply('.container', {
           </div>
         </div>
       </div>
-      <div class="codebox result">
+      <div class=" codebox result reveal translate_right">
         <div class="refresh_btn refresh_2">
           <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
         </div>
@@ -228,15 +257,15 @@ itemManager.apply('.container', {
       </div>
     </div>
 
-    <div class="example_title ex_text">Adding items.</div>
-    <div class="example_desc ex_text">
-      Itemized containers will automatically itemize and animate newly added
+    <div class="example_title ex_text reveal translate_up">Adding items.</div>
+    <div class="example_desc ex_text reveal translate_up">
+      Targeted containers will automatically itemize and animate newly added
       elements.<br />You can disable this globally by setting the
       "itemizeAddedElement" option to "false", or for a single element with
       the attribute "notItemize".
     </div>
     <div class="example">
-      <div class="codebox code">
+      <div class=" codebox code reveal translate_left">
         <div class="codebox_top">
           <div class="round_btn"></div>
           <div class="round_btn"></div>
@@ -254,7 +283,8 @@ itemManager.apply('.container', {
         </div>
         <div class="code_content">
           <div class="html_content hide">
-            <pre><code class="language-html">&lt;div itemize class="container">
+            <pre><code class="language-html">
+&lt;div itemize class="container">
   &lt;button notItemize class="add_btn">
     Add DOM element
   &lt;/button>
@@ -276,7 +306,8 @@ itemManager.apply('.container', {
 &lt;/style></code></pre>
           </div>
           <div class="js_content">
-            <pre><code class="language-javascript">var itemManager = new Itemize();
+            <pre><code class="language-javascript">
+var itemManager = new Itemize();
 
 itemManager.apply({
   showAddNotifications: true
@@ -294,7 +325,7 @@ btn.addEventListener("click", function() {
           </div>
         </div>
       </div>
-      <div class="codebox result">
+      <div class=" codebox result reveal translate_right">
         <div class="refresh_btn refresh_3">
           <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
         </div>
@@ -314,16 +345,16 @@ btn.addEventListener("click", function() {
       </div>
     </div>
 
-    <div class="example_title ex_text">
+    <div class="example_title ex_text reveal translate_up">
       Custom remove button and custom animation.
     </div>
-    <div class="example_desc ex_text">
+    <div class="example_desc ex_text reveal translate_up">
       You can replace the default cross with your own button with the option:
       "removeBtnClass". Several options can control the animation, here is a
       few:
     </div>
     <div class="example">
-      <div class="codebox code">
+      <div class=" codebox code reveal translate_left">
         <div class="codebox_top">
           <div class="round_btn"></div>
           <div class="round_btn"></div>
@@ -341,7 +372,8 @@ btn.addEventListener("click", function() {
         </div>
         <div class="code_content">
           <div class="html_content hide">
-            <pre><code class="language-html">&lt;div itemize class="container">
+            <pre><code class="language-html">
+&lt;div itemize class="container">
   &lt;div>
     ITEM 1
     &lt;button class="rm_btn">
@@ -374,7 +406,8 @@ btn.addEventListener("click", function() {
 &lt;/style></code></pre>
           </div>
           <div class="js_content">
-            <pre><code class="language-javascript">var itemManager = new Itemize();
+            <pre><code class="language-javascript">
+var itemManager = new Itemize();
 
 itemManager.apply({
   removeBtnClass: "rm_btn",
@@ -387,7 +420,7 @@ itemManager.apply({
           </div>
         </div>
       </div>
-      <div class="codebox result">
+      <div class=" codebox result reveal translate_right">
         <div class="refresh_btn refresh_4">
           <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
         </div>
@@ -406,6 +439,20 @@ itemManager.apply({
         </div>
       </div>
     </div>
+  </section>
+  <section class="footer">
+    <div class="foot_text">
+      <span>ItemizeJS</span> <span>-</span> <span>Created by</span><a class="created_by" href="https://www.kosmoon.fr"
+        target="_blank" rel="noopener noreferrer">Kosmoon</a><span>- </span><a
+        href="https://github.com/Kosmoon/itemizejs"><img height="16px" src="img/GitHub-Mark.png"
+          alt="git hub ico" /></a>
+      <a href="https://twitter.com/KosmoonDev"><img height="16px" src="img/twit.png" alt="twit ico" /></a>
+    </div>
+    <div class="licence">
+      Licensed under
+      <a href="https://fr.wikipedia.org/wiki/Licence_MIT">MIT</a>
+    </div>
+    <div class="corp">Copyright © 2019 Kosmoon</div>
   </section>
 </body>
 

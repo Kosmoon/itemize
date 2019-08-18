@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/prism2.css" />
     <link rel="stylesheet" href="css/info.css" />
-    <script src="js/scroll.js"></script>
+    <script src="js/bundle-info.js"></script>
+    <!-- <script src="js/scroll.js"></script>
     <script src="js/resize.js"></script>
     <script src="js/prism.js"></script>
-    <script src="js/hamb.js"></script>
+    <script src="js/hamb.js"></script> -->
     <title>Itemize - Getting started - Download</title>
 
 </head>
@@ -21,7 +22,8 @@
 <body>
     <div id="navbar">
         <a href="index.html" class="logo">
-            <img height="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span class="logo_txt">ItemizeJS</span>
+            <img height="40px" width="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span
+                class="logo_txt">ItemizeJS</span>
         </a>
         <button class="hamburger hamburger--collapse" type="button">
             <span class="hamburger-box">
@@ -32,22 +34,23 @@
 
             <a href="docs.html" class="nav_link nav_item">Documentation</a>
             <a href="index.html?example" class="nav_link nav_item">Examples</a>
-            <div class="git_txt_logo">
+            <a href="https://github.com/Kosmoon/itemizejs" class="git_txt_logo">
                 <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
-            </div>
-            <img class="nav_link git_logo" src="img/GitHub-Mark.png" alt="git logo" />
+            </a>
+            <a href="https://github.com/Kosmoon/itemizejs"><img class="nav_link git_logo" src="img/GitHub-Mark.png"
+                    alt="git logo" /></a>
         </div>
     </div>
     <div class="main_content">
         <div class="dl"> <img class="dl_icon" height="35px" src="img/c_dl.png" alt="download icon">
-            <h1 class="download_txt">Download</h1><span class="version">(Version 1.1)</span>
+            <h1 class="download_txt">Download</h1><span class="version">(Version 1.0.7)</span>
 
         </div>
         <div class="separator"></div>
         <div class="btn_dl_container">
-            <div class="btn_dl"><span>Download</span></div>
-            <div class="btn_dl"><span></span>Download Minified</span></div>
-            <div class="btn_dl"><span></span>Github repo</span></div>
+            <a class="btn_dl" href="./js/itemize.js" download><span>Download</span></a>
+            <a class="btn_dl" href="./js/itemize.min.js" download></span>Download Minified</span></a>
+            <a class="btn_dl" href="https://github.com/Kosmoon/itemizejs"><span>Github repo</span></a>
         </div>
         <div class="getting_started"> <img class="start_icon" height="35px" src="img/bracket.png" alt="code icon">
             <h1 class="getting_txt">Getting started</h1>
@@ -57,12 +60,13 @@
         <div class="separator"></div>
         <h2>Include script</h2>
         <h3>CDN:</h3>
-        <pre><code class="language-html">&lt;script src="//cdn.jsdelivr.net/npm/itemizejs@1.11.4/build/itemize.min.js">&lt;/script></code></pre>
+        <pre><code class="language-html">&lt;script src="https://cdn.jsdelivr.net/npm/itemizejs@1.0.7/itemize.min.js">&lt;/script></code></pre>
         <h3>Locally:</h3>
         <pre><code class="language-html">&lt;script src="YOURPATH/itemize.min.js">&lt;/script></code></pre>
 
         <h2>Install with NPM</h2>
         <pre><code class="language-html">npm install itemizejs</code></pre>
+        <pre><code class="language-javascript">import Itemize from "itemizejs";</code></pre>
         <h2>Start coding!</h2>
         <pre><code class="language-javascript">var itemManager = new Itemize();
  itemManager.apply(".target_container");</code></pre>
@@ -72,7 +76,20 @@
         </div>
 
     </div>
-
+    <section class="footer">
+        <div class="foot_text">
+            <span>ItemizeJS</span> <span>-</span> <span>Created by</span><a class="created_by"
+                href="https://www.kosmoon.fr" target="_blank" rel="noopener noreferrer">Kosmoon</a><span>-
+            </span><a href="https://github.com/Kosmoon/itemizejs"><img height="16px" src="img/GitHub-Mark.png"
+                    alt="git hub ico" /></a>
+            <a href="https://twitter.com/KosmoonDev"><img height="16px" src="img/twit.png" alt="twit ico" /></a>
+        </div>
+        <div class="licence">
+            Licensed under
+            <a href="https://fr.wikipedia.org/wiki/Licence_MIT">MIT</a>
+        </div>
+        <div class="corp">Copyright © 2019 Kosmoon</div>
+    </section>
 </body>
 
 </html>

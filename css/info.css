@@ -95,14 +95,17 @@ pre {
     -moz-transition: background-color 0.3s ease-in-out;
     -ms-transition: background-color 0.3s ease-in-out;
     -o-transition: background-color 0.3s ease-in-out;
-    font-size: 18px
+    font-size: 18px;
+    text-decoration: none;
+    color: white;
 }
 
 .btns {
     display: flex;
     width: 100%;
     justify-content: center;
-    margin-bottom: 20px
+    margin-bottom: 40px;
+    margin-top: 40px
 }
 
 @media screen and (max-width: 900px) {
@@ -124,12 +127,18 @@ pre {
     }
 
     .btn_dl {
-        font-size: 16px;
+        font-size: 14px;
         text-align: center;
         margin: 0px 3px 0px 3px;
         padding: 4px;
         width: 33%;
         height: 50px;
+        text-decoration: none;
+        color: white
+    }
+
+    .btns .btn_dl {
+        width: 40%;
     }
 
     .version {

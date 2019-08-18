@@ -1,7 +1,10 @@
+"use strict";
+var homePage = true;
+var itemManager = new Itemize();
 window.addEventListener("load", function() {
-  var itemManager = new Itemize();
-  itemManager.apply({ showAddNotifications: true });
-
+  itemManager.apply({
+    showAddNotifications: true
+  });
   var refreshEx1Btn = document.querySelector(".refresh_1");
   var ex1Container = document.querySelector(".example1_container");
   refreshEx1Btn.addEventListener("click", function() {
@@ -9,16 +12,16 @@ window.addEventListener("load", function() {
       '<div class="item">ITEM 1</div> <div class="item">ITEM 2</div><div class="item">ITEM 3</div><div class="item">ITEM 4</div>';
     itemManager.apply(".example1_container");
   });
-
   var refreshEx2Btn = document.querySelector(".refresh_2");
   var ex2Container = document.querySelector(".example2_container");
   refreshEx2Btn.addEventListener("click", function() {
+    // itemManager.cancel(".example2_container");
     ex2Container.innerHTML =
       '<div class="cat"><img src="img/cat1.jpeg" alt=""></div><div class="cat"><img src="img/cat2.jpeg" alt=""></div><div class="cat"><img src="img/cat3.jpeg" alt=""></div><div class="cat"><img src="img/cat4.jpeg" alt=""></div>';
     applyToEx2();
   });
 
-  var applyToEx2 = function() {
+  var applyToEx2 = function applyToEx2() {
     itemManager.apply(".example2_container", {
       modalConfirm: true,
       modalText: "Remove this image?",
@@ -29,11 +32,12 @@ window.addEventListener("load", function() {
       removeBtnBgColor: "#ffffff"
     });
   };
-  applyToEx2();
 
+  applyToEx2();
   var refreshEx3Btn = document.querySelector(".refresh_3");
   var ex3Container = document.querySelector(".example3_container");
-  var addListenerToBtn = function() {
+
+  var addListenerToBtn = function addListenerToBtn() {
     document.querySelector(".add_btn").addEventListener("click", function() {
       var newElement = document.createElement("div");
       newElement.classList.add("item");
@@ -41,14 +45,16 @@ window.addEventListener("load", function() {
       document.querySelector(".example3_container").appendChild(newElement);
     });
   };
+
   addListenerToBtn();
   refreshEx3Btn.addEventListener("click", function() {
     ex3Container.innerHTML =
       '<button notItemize class="add_btn">Add a DOM element</button><div class="item">ITEM</div><div class="item">ITEM</div>';
     addListenerToBtn();
-    itemManager.apply(".example3_container", { showAddNotifications: true });
+    itemManager.apply(".example3_container", {
+      showAddNotifications: true
+    });
   });
-
   var refreshEx4Btn = document.querySelector(".refresh_4");
   var ex4Container = document.querySelector(".example4_container");
   itemManager.apply(".example4_container", {
@@ -67,7 +73,6 @@ window.addEventListener("load", function() {
       animRemoveTranslateY: 100
     });
   });
-
   var exampleBtn = document.querySelector(".example_btn");
   exampleBtn.addEventListener("click", function() {
     window.scroll({
@@ -84,10 +89,12 @@ window.addEventListener("load", function() {
       behavior: "smooth"
     });
   }
+
   if (window.location.href.indexOf("index") !== -1) {
     var getStartNav = document.querySelector(".get_start_nav");
     var dlNav = document.querySelector(".dl_nav");
     var docNav = document.querySelector(".doc_nav");
+
     if (window.pageYOffset < 300) {
       getStartNav.classList.add("off");
       dlNav.classList.add("off");
@@ -98,4 +105,33 @@ window.addEventListener("load", function() {
       docNav.classList.remove("off");
     }
   }
+
+  var revealElems = document.querySelectorAll(".reveal");
+  revealElems = Array.prototype.slice.call(revealElems);
+
+  for (var i = 0; i < revealElems.length; i++) {
+    if (isInViewport(revealElems[i], 0.3)) {
+      revealElems[i].classList.add("apply");
+    }
+  }
+
+  window.addEventListener("scroll", function(e) {
+    for (var _i = revealElems.length - 1; _i >= 0; _i--) {
+      if (isInViewport(revealElems[_i], 0.1)) {
+        revealElems[_i].classList.add("apply");
+
+        revealElems.splice(_i, 1);
+      }
+    }
+  });
 });
+
+function isInViewport(elem, threshold) {
+  if (elem) {
+    var bounding = elem.getBoundingClientRect();
+    return (
+      bounding.top + bounding.height * threshold <= window.innerHeight &&
+      bounding.bottom >= 0
+    );
+  }
+}

@@ -10,18 +10,21 @@
   <link rel="stylesheet" href="css/index.css" />
   <link rel="stylesheet" href="css/docs.css" />
   <link rel="stylesheet" href="css/prism2.css" />
+  <script src="js/bundle-doc.js"></script>
+  <!-- <script src="js/scrollPolyfill.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/resize.js"></script>
   <script src="js/prism.js"></script>
   <script src="js/doc_navigation.js"></script>
-  <script src="js/hamb.js"></script>
+  <script src="js/hamb.js"></script> -->
   <title>Itemize - Documentation</title>
 </head>
 
 <body>
   <div id="navbar">
     <a href="index.html" class="logo">
-      <img height="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span class="logo_txt">ItemizeJS</span>
+      <img height="40px" width="40px" src="img/logo.svg" alt="logo" class="logo_svg" /><span
+        class="logo_txt">ItemizeJS</span>
     </a>
     <button class="hamburger hamburger--collapse" type="button">
       <span class="hamburger-box">
@@ -32,10 +35,11 @@
       <a href="info.html" class="nav_link nav_item">Getting started</a>
       <a href="info.html" class="nav_link nav_item">Download</a>
       <a href="index.html?example" class="nav_link nav_item">Examples</a>
-      <div class="git_txt_logo">
+      <a href="https://github.com/Kosmoon/itemizejs" class="git_txt_logo">
         <span>Github</span><img class="git_logo2" src="img/GitHub-Mark.png" alt="git logo" />
-      </div>
-      <img class="nav_link git_logo" src="img/GitHub-Mark.png" alt="git logo" />
+      </a>
+      <a href="https://github.com/Kosmoon/itemizejs"><img class="nav_link git_logo" src="img/GitHub-Mark.png"
+          alt="git logo" /></a>
     </div>
   </div>
   <div id="main_content">
@@ -44,6 +48,7 @@
       <h2>apply</h2>
       <h2>cancel</h2>
       <h1>Options</h1>
+      <h2>dragAndDrop</h2>
       <h2>removeBtn</h2>
       <h2>removeBtnClass</h2>
       <h2>removeBtnWidth</h2>
@@ -86,10 +91,10 @@
       <div class="separator"></div>
       <h1>apply(targets, options)</h1>
       <h1 class="desc">
-        Apply itemization of targeted containers with specified options.
+        Apply itemization of targeted containers.
       </h1>
-      <h1 class="under_h1">Parameters:</h1>
-      <table>
+      <h1 class="under_h1">Arguments:</h1>
+      <table class="table_public_param">
         <thead>
           <tr>
             <th>Name</th>
@@ -102,34 +107,32 @@
           <tr>
             <td class="name">targets</td>
             <td class="type">
-              String or DOM element<br />or Array of Strings or Array of DOM
-              elements
+              String
             </td>
             <td class="default">"[itemize]"</td>
             <td>
-              Single selector or an array of selectors targeting the
-              containers to itemize (vanilla javascript "querySelector"
-              syntax).<br />Example: ".container" or [".container",
-              "#special_container"].<br />
-              Or DOM elements.<br />If no target is specified, default targets
+              Regular javascript "querySelectorAll" syntax.<br />Example: ".container" or ".container,
+              #special_container".<br />If no target is specified,
+              default targets
               will be elements with the "itemize" attribute.
             </td>
           </tr>
           <tr>
             <td class="name">options</td>
             <td class="type">Object</td>
-            <td class="default">see default options</td>
+            <td class="default">Default properties are listed below</td>
             <td>Custom options</td>
           </tr>
         </tbody>
       </table>
-
+      <h1 class="note">Important: if you want to exclude a DOM element from being itemized simply add "notitemize"
+        to its attributes.</h1>
       <div class="separator"></div>
       <h1 class="cancel">cancel(targets)</h1>
       <h1 class="desc">
         Cancel itemization of targeted containers.
       </h1>
-      <h1 class="under_h1">Parameters:</h1>
+      <h1 class="under_h1">Arguments:</h1>
       <table>
         <thead>
           <tr>
@@ -143,17 +146,12 @@
           <tr>
             <td class="name">targets</td>
             <td class="type">
-              String or DOM element<br />or Array of Strings or Array of DOM
-              elements
+              String
             </td>
             <td class="default">"[itemize]"</td>
-            <td>
-              Single selector or an array of selectors targeting the
-              containers to cancel itemization (vanilla javascript
-              "querySelector" syntax).<br />Example: ".container" or
-              [".container", "#special_container"].<br />
-              Or DOM elements.<br />If no target is specified, default targets
-              will be elements with the "itemize" attribute.
+            <td>Regular javascript "querySelectorAll" syntax.<br />Example:
+              ".container" or ".container, #special_container".<br />If no
+              target is specified, default targets will be elements with the "itemize" attribute.
             </td>
           </tr>
         </tbody>
@@ -162,15 +160,16 @@
       <div class="separator"></div>
       <h1 class="options">Options</h1>
       <h1 class="desc">
-        (Object) Parameter of the public method "apply".<br />
+        (Object) Argument of the public method "apply".<br />
         All the properties (except "beforeRemove" and "onAddItem") can be set
-        in HTML with attributes. <br /><br />
+        in the HTML with attributes. Attributes have priority over custom options.<br /><br />
         Example:
         <pre><code class="language-html">&lt;div itemize class="container" modalConfirm="true" modalText="Are you really sure?" notificationTimer="2000"></code></pre>
         <br /><br />
-        Or in the "apply" function's parameter. <br /><br />
+        Or in the "apply" function's arguments. <br /><br />
         Example:
-        <pre><code class="language-javascript">var itemManager = new Itemize;
+        <pre><code class="language-javascript">
+ var itemManager = new Itemize();
  itemManager.apply(".container", {
    modalConfirm: true,
    modalText: "Are you really sure?",
@@ -181,6 +180,19 @@
   modalConfirm: true,
   modalText: "Are you really sure?",
   notificationTimer: 2000
+ });</code></pre>
+        <br /><br />
+        Global options can be specified at initialisation. However, options specified with the "apply" function or in
+        HTML
+        attributes have priority over global options <br /><br />
+        Example:
+        <pre><code class="language-javascript">
+ var itemManager = new Itemize({
+   modalConfirm: true,
+   modalText: "Are you really sure?",
+   notificationTimer: 2000
+   });
+ itemManager.apply(".container")
  });</code></pre>
       </h1><br />
       <h1 class="under_h1">Properties:</h1>
@@ -195,16 +207,26 @@
         </thead>
         <tbody>
           <tr>
-            <td class="name">removeBtn</td>
+            <td class="name">dragAndDrop</td>
             <td class="type">
               Boolean
             </td>
-            <td class="default">true</td>
+            <td class="default">false</td>
             <td>
-              If true then the default remove button will be used. If false
-              and removeBtnClass is not specified, a click on the item will
-              remove it.
+              If true then enables items to be sortable. Drag and drop an item to a new spot, and the other items will
+              reorganize themselves.
             </td>
+          </tr>
+          <td class="name">removeBtn</td>
+          <td class="type">
+            Boolean
+          </td>
+          <td class="default">true</td>
+          <td>
+            If true then the default remove button will be used. If false
+            and removeBtnClass is not specified, a click on the item itself will
+            remove it.
+          </td>
           </tr>
           <tr>
             <td class="name">removeBtnClass</td>
@@ -266,7 +288,7 @@
             <td class="type">
               String
             </td>
-            <td class="default">#d1cfcf91</td>
+            <td class="default">rgba(200, 200, 200, 0.5)</td>
             <td>
               The background color of the remove button.
             </td>
@@ -286,9 +308,9 @@
             <td class="type">
               String
             </td>
-            <td class="default">0px</td>
+            <td class="default">0%</td>
             <td>
-              The sharpness of the cross icon's edges.
+              The sharpness of the cross icon's edges. (in "px" or "%")
             </td>
           </tr>
 
@@ -319,7 +341,7 @@
             <td class="type">
               Boolean
             </td>
-            <td class="default">false</td>
+            <td class="default">true</td>
             <td>
               If true then the remove button's border will be a circle.
             </td>
@@ -501,7 +523,8 @@
               Number
             </td>
             <td class="default">1</td>
-            <td>Controls the nesting level of the itemization.</td>
+            <td>Controls the nesting level of the itemization. A nestingLevel of 2 will also itemize the children of the
+              target's children and so on.</td>
           </tr>
           <tr>
             <td class="name">itemizeAddedElement</td>
@@ -509,7 +532,7 @@
               Boolean
             </td>
             <td class="default">true</td>
-            <td>If false then stops itemizing new added DOM elements.</td>
+            <td>If false then disable the automatic itemization of new added DOM elements of an itemized container.</td>
           </tr>
           <tr>
             <td class="name">beforeRemove</td>
@@ -518,16 +541,17 @@
             </td>
             <td class="default">null</td>
             <td>
-              Function called when an item is about to be removed. It receives
-              the item to remove as parameter (DOM element).<br /><br />
-              Synchronous: return "true" if you want to actually remove the
+              Function called when an item is about to be removed. The item to remove (DOM element) is passed as
+              argument.<br /><br />
+              Synchronous: You have to return "true" if you want to actually remove the
               item or "false" if you don't want to remove it. <br />
               <br />
-              Asynchronous: return a new promise and call resolve() if you
+              Asynchronous: You have to return a new promise and call resolve() if you
               want to actually remove the item or reject() if you don't want
               to remove it.<br /><br />
               Example (Synchronous): <br />
-              <pre><code class="language-javascript">var itemManager = new Itemize();
+              <pre><code class="language-javascript">
+  var itemManager = new Itemize();
   itemManager.apply({
     beforeRemove: (item) => {
       console.log(item);
@@ -536,7 +560,8 @@
   });</code></pre>
               <br />
               Example (Asynchronous): <br />
-              <pre><code class="language-javascript">var itemManager = new Itemize();
+              <pre><code class="language-javascript">
+  var itemManager = new Itemize();
   itemManager.apply({
     beforeRemove: (item) => {
       return new Promise((resolve, reject) => {
@@ -556,8 +581,7 @@
             </td>
             <td class="default">null</td>
             <td>
-              Function called when an item is added. It receives the added
-              item as parameter (DOM element).
+              Function called when an item is added. The added item (DOM element) is passed as argument.
             </td>
           </tr>
         </tbody>
@@ -590,13 +614,28 @@
             <td class="name">globalOptions</td>
             <td class="type">Object</td>
             <td>Options applied globally. Can be specified at the initialization of the Itemize object.<br>Local options
-              specified in the parameters of the "apply" function or in the HTML attributes override global options.
+              specified in the arguments of the "apply" function or in the HTML attributes have priority over global
+              options.
             </td>
           </tr>
         </tbody>
       </table>
     </div>
   </div>
+  <section class="footer">
+    <div class="foot_text">
+      <span>ItemizeJS</span> <span>-</span> <span>Created by</span><a class="created_by" href="https://www.kosmoon.fr"
+        target="_blank" rel="noopener noreferrer">Kosmoon</a><span>-
+      </span><a href="https://github.com/Kosmoon/itemizejs"><img height="16px" src="img/GitHub-Mark.png"
+          alt="git hub ico" /></a>
+      <a href="https://twitter.com/KosmoonDev"><img height="16px" src="img/twit.png" alt="twit ico" /></a>
+    </div>
+    <div class="licence">
+      Licensed under
+      <a href="https://fr.wikipedia.org/wiki/Licence_MIT">MIT</a>
+    </div>
+    <div class="corp">Copyright © 2019 Kosmoon</div>
+  </section>
 </body>
 
 </html>
