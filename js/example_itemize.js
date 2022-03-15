@@ -2,8 +2,10 @@
 var homePage = true;
 var itemManager = new Itemize();
 window.addEventListener("load", function() {
-  itemManager.apply({
-    showAddNotifications: true
+  itemManager.apply(".example1_container");
+  itemManager.apply(".example3_container", {
+    showAddNotifications: true,
+    dragAndDrop: true
   });
   var refreshEx1Btn = document.querySelector(".refresh_1");
   var ex1Container = document.querySelector(".example1_container");
@@ -29,11 +31,26 @@ window.addEventListener("load", function() {
       removeNotificationText: "Cat image removed",
       notificationPosition: "bottom-center",
       removeBtnPosition: "top-left",
-      removeBtnBgColor: "#ffffff"
+      removeBtnBgColor: "#ffffff",
+      dragAndDrop: true
     });
   };
-
   applyToEx2();
+
+  var refreshExDragBtn = document.querySelector(".refresh_drag");
+  var exDragContainer = document.querySelector(".example_drag_container");
+  refreshExDragBtn.addEventListener("click", function() {
+    exDragContainer.innerHTML =
+      '<div class="item red">ITEM 1</div><div class="item green">ITEM 2</div><div class="item yellow">ITEM 3</div><div class="item blue">ITEM 4</div>';
+    applyToExDrag();
+  });
+  var applyToExDrag = function applyToExDrag() {
+    itemManager.apply(".example_drag_container", {
+      dragAndDrop: true
+    });
+  };
+  applyToExDrag();
+
   var refreshEx3Btn = document.querySelector(".refresh_3");
   var ex3Container = document.querySelector(".example3_container");
 
@@ -52,7 +69,8 @@ window.addEventListener("load", function() {
       '<button notItemize class="add_btn">Add a DOM element</button><div class="item">ITEM</div><div class="item">ITEM</div>';
     addListenerToBtn();
     itemManager.apply(".example3_container", {
-      showAddNotifications: true
+      showAddNotifications: true,
+      dragAndDrop: true
     });
   });
   var refreshEx4Btn = document.querySelector(".refresh_4");

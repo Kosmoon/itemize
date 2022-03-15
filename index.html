@@ -138,8 +138,9 @@
   .item {
     padding: 15px;
     border: solid 1px black;
-    margin-bottom: 4px;
+    margin-bottom: 7px;
     background-color: #c8c7c7;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, .4);
   } 
 &lt;/style></code></pre>
           </div>
@@ -172,11 +173,97 @@ itemManager.apply();</code></pre>
       </div>
     </div>
 
+
+    <div class="example_title ex_text reveal translate_up">Sorting (Drag and drop).</div>
+    <div class="example_desc ex_text reveal translate_up reveal translate_up">
+      Drag and drop an item to a new spot, and the other items will reorganize themselves.
+    </div>
+    <div class="example">
+      <div class="codebox code reveal translate_left">
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="html_js_tab">
+          <div class="html_tab tab">
+            <img height="21px" src="img/html5.png" alt="html icon" />
+            <span>Html</span>
+          </div>
+          <div class="javascript_tab tab selected">
+            <img height="21px" src="img/javascript.png" alt="javascript icon" />
+            <span>Javascript</span>
+          </div>
+        </div>
+        <div class="code_content">
+          <div class="html_content hide">
+            <pre><code class="language-html">
+&lt;div class="container">
+  &lt;div class="item red">⚽️&lt;/div>
+  &lt;div class="item green">🏀&lt;/div>
+  &lt;div class="item yellow">🏈&lt;/div>
+  &lt;div class="item blue">🎱&lt;/div>
+&lt;/div>
+&lt;style>
+  .item {
+    width: 50%;
+    padding: 10px;
+    border: solid 1px black;
+    margin: 0 auto 15px auto;
+    color: white;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, .4);
+  }
+  .red {
+    background-color: #c0392b
+  }
+  .green {
+      background-color: #16a085
+  }
+  .yellow {
+      background-color: #f39c12
+  }
+  .blue {
+      background-color: #2980b9
+  }
+&lt;/style></code></pre>
+          </div>
+          <div class="js_content">
+            <pre><code class="language-javascript">
+var itemManager = new Itemize();
+
+itemManager.apply('container', {
+  dragAndDrop: true
+});</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="codebox result reveal translate_right">
+        <div class="refresh_btn refresh_drag">
+          <img width="30px" src="img/refresh_icon.png" alt="refresh icon" class="refresh_icon" />
+        </div>
+
+        <div class="codebox_top">
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+          <div class="round_btn"></div>
+        </div>
+        <div class="result_content">
+          <div class="example_drag_container">
+            <div class="item red">⚽️</div>
+            <div class="item green">🏀</div>
+            <div class="item yellow">🏈</div>
+            <div class="item blue">🎱</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
     <div class="example_title ex_text reveal translate_up">
-      Specified target, modal confirm, notification message.
+      Modal confirm, notification message.
     </div>
     <div class="example_desc ex_text reveal translate_up">
-      Read <a href="./docs.html" class="doc_link">documentation</a> to know
+      Read the <a href="./docs.html" class="doc_link">docs</a> to know
       more about custom options.
     </div>
     <div class="example">
@@ -230,7 +317,8 @@ itemManager.apply('.container', {
   removeNotificationText: 'Cat image removed',
   notificationPosition: 'bottom-center',
   removeBtnPosition: 'top-left',
-  removeBtnBgColor: "#ffffff"
+  removeBtnBgColor: "#ffffff",
+  dragAndDrop: true
 });
             </code></pre>
           </div>
@@ -310,15 +398,17 @@ itemManager.apply('.container', {
 var itemManager = new Itemize();
 
 itemManager.apply({
-  showAddNotifications: true
+  showAddNotifications: true,
+  dragAndDrop: true
 });
 
 var btn = document.querySelector(".add_btn");
+var container = document.querySelector(".container");
+
 btn.addEventListener("click", function() {
   var newElement = document.createElement("div");
   newElement.classList.add("item");
   newElement.textContent = "ITEM";
-  var container = document.querySelector(".container");
   container.appendChild(newElement);
 });
             </code></pre>

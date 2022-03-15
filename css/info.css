@@ -15,7 +15,13 @@ body {
 .dl,
 .getting_started {
     display: flex;
-    align-items: flex-end
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px
+}
+
+.getting_started {
+    margin-top: 120px
 }
 
 h1 {
@@ -43,8 +49,12 @@ pre {
 .download_txt,
 .getting_txt {
     font-size: 35px;
-    margin-left: 8px;
+    margin-left: 15px;
     line-height: 35px
+}
+
+.getting_started {
+    margin-top: 80px
 }
 
 .version {
@@ -60,6 +70,7 @@ pre {
     margin-top: 25px;
     margin-bottom: 25px;
 }
+
 
 .btn_dl_container {
     display: flex;
@@ -152,7 +163,7 @@ pre {
 
     .dl,
     .getting_started {
-        justify-content: center
+        justify-content: center;
     }
 
     code[class*="language-"],

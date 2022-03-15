@@ -12,6 +12,7 @@
     justify-content: flex-start;
     width: 100%;
     overflow: hidden;
+    font-family: "Montserrat"
 }
 
 .example_title {
@@ -130,6 +131,10 @@
     margin-top: 5px
 }
 
+.tab span {
+    margin-top: 5px
+}
+
 .code_content {
     display: flex;
     width: 100%;
@@ -143,11 +148,15 @@
 }
 
 .html_content {
-    border: solid 1px #191921
+    border: solid 1px #191921;
+    scrollbar-color: rgba(184, 183, 183, 0.2) #282B37;
+    scrollbar-width: thin;
 }
 
 .js_content {
-    border: solid 1px #191921
+    border: solid 1px #191921;
+    scrollbar-color: rgba(184, 183, 183, 0.2) #282B37;
+    scrollbar-width: thin;
 }
 
 .scrollable {
@@ -169,11 +178,43 @@
 }
 
 
-.example1_container .item {
+.example1_container .item,
+.example_drag_container .item {
     padding: 15px;
     border: solid 1px black;
+    border-radius: 5px;
     margin-bottom: 4px;
+    text-align: center;
+    margin-bottom: 7px;
+    box-shadow: 0 5px 10px -2px rgba(0, 0, 0, .4);
+}
+
+.example1_container .item {
     background-color: #e9e9e9;
+}
+
+.example_drag_container .item {
+    padding: 10px;
+    width: 50%;
+    margin: 0 auto 15px auto;
+    color: white;
+    font-size: 25px
+}
+
+.red {
+    background-color: #c0392b
+}
+
+.green {
+    background-color: #16a085
+}
+
+.yellow {
+    background-color: #f39c12
+}
+
+.blue {
+    background-color: #2980b9
 }
 
 .example3_container .item {
@@ -366,6 +407,11 @@
     .tab.selected img {
         margin-top: 5px
     }
+
+    .tab span {
+        margin-top: 1px
+    }
+
 
     code[class*="language-"],
     pre[class*="language-"] {
